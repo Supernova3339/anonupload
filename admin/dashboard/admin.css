@@ -1,0 +1,2279 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, Arial, sans-serif;
+    font-size: 16px;
+}
+html {
+    height: 100%;
+}
+body {
+    position: relative;
+    min-height: 100%;
+    color: #555;
+    background-color: #ebeced;
+    margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #4a5361;
+    margin: 0;
+    padding: 0;
+}
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-left: 260px;
+    z-index: 999;
+    width: 100%;
+    height: 55px;
+    background-color: #fff;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.15);
+}
+header a {
+    display: inline-flex;
+    color: #4a5361;
+    height: 100%;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+header a i {
+    font-size: 16px;
+}
+header a:hover,
+header a:active {
+    color: #606c7e;
+}
+header .space-between {
+    flex: 1;
+}
+header .dropdown {
+    display: inline-flex;
+    color: #4a5361;
+    height: 100%;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+}
+header .dropdown i {
+    font-size: 18px;
+}
+header .dropdown:hover,
+header .dropdown:active {
+    color: #606c7e;
+}
+header .dropdown .list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 150px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.05);
+}
+header .dropdown .list a {
+    padding: 10px 15px;
+    font-size: 14px;
+}
+header .dropdown .list a:hover {
+    background-color: #fbfbfb;
+}
+header .dropdown:hover .list,
+header .dropdown:active .list {
+    display: flex;
+    flex-flow: column;
+}
+header.full {
+    padding-left: 0;
+}
+aside {
+    position: fixed;
+    z-index: 999999;
+    height: 100%;
+    width: 260px;
+    display: flex;
+    flex-flow: column;
+    background-color: #26292f;
+    overflow-y: auto;
+}
+aside h1 {
+    display: inline-flex;
+    background-color: #5472bd;
+    width: 100%;
+    height: 55px;
+    min-height: 55px;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: center;
+}
+aside > a {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #afb1b5;
+    padding: 15px 20px;
+}
+aside > a i {
+    width: 40px;
+}
+aside > a:hover,
+aside > a.selected {
+    background-color: #383d48;
+    color: #fff;
+    border-left: 3px solid #4a79b4;
+    padding: 15px 17px;
+}
+aside > a.selected + .sub {
+    display: flex;
+}
+aside > a .note {
+    background-color: #383c46;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+aside .sub {
+    display: none;
+    flex-flow: column;
+    background-color: #1d1f24;
+    padding: 13px 0;
+}
+aside .sub a {
+    font-size: 14px;
+    color: #afb1b5;
+    text-decoration: none;
+    padding: 4px 20px;
+}
+aside .sub a span {
+    display: inline-block;
+    width: 40px;
+    font-size: 12px;
+}
+aside .sub a:hover,
+aside .sub a.selected {
+    color: #fff;
+}
+aside .footer {
+    display: flex;
+    flex-flow: column;
+    margin-top: auto;
+    padding: 15px;
+    border-top: 1px solid #21242a;
+    font-size: 14px;
+    color: #5a5b5e;
+}
+aside .footer a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #707276;
+    padding-bottom: 2px;
+}
+aside .footer a:hover {
+    color: #7c7f83;
+}
+aside.closed {
+    display: none;
+}
+main {
+    padding: 30px;
+    padding-left: 290px;
+    padding-top: 85px;
+}
+main.full {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+main h2 {
+    font-size: 20px;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+main h2 span {
+    font-size: 16px;
+    margin-left: 5px;
+    font-weight: 600;
+    color: #959faf;
+}
+main .content-title {
+    border-bottom: 1px solid #dbdddf;
+    display: flex;
+}
+main .content-title h2 {
+    flex: 1;
+}
+main .content-title .btn {
+    height: 36px;
+}
+main .msg {
+    display: flex;
+    align-items: center;
+    margin: 15px 0 0;
+    padding: 15px;
+    font-weight: 500;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+main .msg p {
+    margin: 0;
+    padding: 0 15px;
+    font-size: 14px;
+    flex: 1;
+}
+main .msg i.fa-times {
+    align-self: flex-end;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+main .msg i.fa-times:hover {
+    opacity: 0.9;
+}
+main .msg.success {
+    background-color: #c3f3d7;
+    border-left: 4px solid #51a775;
+    color: #51a775;
+}
+main .msg.success i {
+    color: #51a775;
+}
+main .msg.error {
+    background-color: #f3c3c3;
+    border-left: 4px solid #a75151;
+    color: #a75151;
+}
+main .msg.error i {
+    color: #a75151;
+}
+main .content-header {
+    display: flex;
+    justify-content: space-between;
+}
+main .content-header form {
+    display: flex;
+    justify-content: space-between;
+}
+main .content-header form .search input,
+main .content-header form > select {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: 40px;
+    width: 220px;
+    border-bottom: 1px solid #d0d3d5;
+    padding-right: 25px;
+    margin-left: 10px;
+}
+main .content-header form .search input:hover,
+main .content-header form .search input:active,
+main .content-header form > select:hover,
+main .content-header form > select:active {
+    border-bottom: 1px solid #b5b9bd;
+}
+main .content-header form > select {
+    width: 150px;
+}
+main .content-header form > a {
+    text-decoration: none;
+    display: inline-flex;
+    color: #676d72;
+    justify-self: center;
+    align-items: center;
+    padding: 0 5px;
+}
+main .content-header form > a:hover {
+    color: #4f5357;
+}
+main .content-header .search label {
+    position: relative;
+}
+main .content-header .search i {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 0;
+    font-size: 14px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #b5b9bd;
+}
+main .content-header .filters {
+    display: flex;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    align-items: center;
+}
+main .content-header .filters a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #4a5361;
+    white-space: nowrap;
+}
+main .content-header .filters a:hover {
+    color: #343a44;
+}
+main .content-header .filters .list {
+    display: none;
+    top: calc(100% + 5px);
+    width: 180px;
+    flex-flow: column;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+main .content-header .filters .list label {
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+main .content-header .filters .list input {
+    margin-right: 10px;
+}
+main .content-header .filters .list select {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding: 3px;
+    border: 1px solid #dedfe1;
+}
+main .content-header .filters .list button {
+    background: #4a79b4;
+    border: 0;
+    color: #fff;
+    padding: 5px 0;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+main .content-header .filters .list button:hover {
+    background: #4672a9;
+}
+main .content-block {
+    background-color: #fff;
+    margin-top: 25px;
+    padding: 15px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+main .content-block .block-header {
+    position: relative;
+    border-bottom: 1px solid #f0f1f2;
+    margin-bottom: 20px;
+    padding: 0 15px 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+main .content-block .block-header i {
+    display: inline-flex;
+    height: 25px;
+    width: 25px;
+    padding-top: 2px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #d5e7fa;
+    color: #6e94ba;
+    margin-right: 10px;
+}
+main .content-block-wrapper {
+    display: flex;
+    width: 100%;
+    padding-top: 25px;
+}
+main .content-block-wrapper .content-block {
+    width: 100%;
+    margin: 0 10px;
+}
+main .content-block-wrapper .content-block:first-child {
+    margin-left: 0;
+}
+main .content-block-wrapper .content-block:last-child {
+    margin-right: 0;
+}
+main .tabs {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: #dedfe1;
+    margin-top: 25px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.03);
+    z-index: 100;
+}
+main .tabs a {
+    display: flex;
+    text-decoration: none;
+    padding: 12px 15px;
+    border: 0;
+    color: #6b788c;
+    font-weight: 500;
+    font-size: 14px;
+}
+main .tabs a:hover {
+    background-color: #d8dadc;
+}
+main .tabs a.active {
+    color: #4a5361;
+    background-color: #fff;
+}
+main .tabs ~ .content-block {
+    margin-top: 0;
+    box-shadow: 0 6px 5px 1px rgba(0, 0, 0, 0.03);
+}
+main .tab-content {
+    display: none;
+}
+main .tab-content.active {
+    display: block;
+}
+main .dashboard {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+main .dashboard .stat {
+    width: 24%;
+    padding: 0;
+    display: flex;
+    flex-flow: wrap;
+}
+main .dashboard .stat > i {
+    display: inline-flex;
+    justify-content: center;
+    padding: 15px;
+    margin: 30px 25px 0 0;
+    align-items: center;
+    font-size: 18px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #d5e7fa;
+    color: #6e94ba;
+}
+main .dashboard .stat .data {
+    padding: 7px;
+    flex: 1;
+}
+main .dashboard .stat .data h3 {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 15px 15px 0;
+}
+main .dashboard .stat .data p {
+    margin: 0;
+    padding: 10px 15px 15px;
+    font-size: 24px;
+    font-weight: 700;
+}
+main .dashboard .stat .footer {
+    width: 100%;
+    border-top: 1px solid #ebeced;
+    background-color: #fbfbfb;
+    color: #9aa0a5;
+    font-size: 14px;
+    padding: 10px;
+}
+main .dashboard .stat .footer i {
+    padding-right: 5px;
+}
+main .form {
+    display: flex;
+    flex-flow: column;
+    width: 500px;
+    padding: 20px;
+}
+main .form input[type="text"],
+main .form input[type="password"],
+main .form input[type="datetime-local"],
+main .form input[type="email"],
+main .form input[type="number"],
+main .form textarea,
+main .form select {
+    width: 100%;
+    padding: 15px 5px;
+    margin-bottom: 25px;
+    border: 0;
+    border-bottom: 1px solid #dedfe1;
+}
+main .form input[type="text"]:hover,
+main .form input[type="text"]:active,
+main .form input[type="password"]:hover,
+main .form input[type="password"]:active,
+main .form input[type="datetime-local"]:hover,
+main .form input[type="datetime-local"]:active,
+main .form input[type="email"]:hover,
+main .form input[type="email"]:active,
+main .form input[type="number"]:hover,
+main .form input[type="number"]:active,
+main .form textarea:hover,
+main .form textarea:active,
+main .form select:hover,
+main .form select:active {
+    border-bottom: 1px solid #b5b9bd;
+}
+main .form textarea {
+    height: 200px;
+}
+main .form input[type="checkbox"] {
+    width: auto;
+    margin: 15px 0 25px 2px;
+    transform: scale(1.2);
+}
+main .form label {
+    display: block;
+    font-weight: 600;
+}
+main .form label .required {
+    font-style: normal;
+    color: #e26060;
+}
+main .form button {
+    background-color: #dedfe1;
+    color: #676d72;
+    border: 0;
+    padding: 5px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+main .form button:hover {
+    background-color: #d6d8da;
+}
+main .form .multiselect {
+    position: relative;
+    display: flex;
+    flex-flow: wrap;
+    border-bottom: 1px solid #dedfe1;
+    padding-bottom: 10px;
+    margin: 15px 0 25px;
+    margin-bottom: 25px;
+}
+main .form .multiselect > .item {
+    display: inline-flex;
+    border: 1px solid #dedfe1;
+    padding: 0 10px;
+    height: 40px;
+    margin: 0 5px 5px 0;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+}
+main .form .multiselect > .item .remove {
+    font-style: normal;
+    cursor: pointer;
+    font-size: 19px;
+    margin-right: 3px;
+    margin-top: -2px;
+    color: #b5b9bd;
+}
+main .form .multiselect > .item .remove:hover {
+    color: #9aa0a5;
+}
+main .form .multiselect input {
+    height: 40px;
+    width: 80px;
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+}
+main .form .multiselect input:hover {
+    border: 0;
+}
+main .form .multiselect .list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    flex-flow: column;
+    background-color: #fff;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+    max-height: 100px;
+    overflow-y: auto;
+    z-index: 1000000000;
+}
+main .form .multiselect .list span {
+    display: flex;
+    padding: 5px 7px;
+    cursor: pointer;
+}
+main .form .multiselect .list span:hover {
+    background-color: #f3f4f4;
+}
+main .form .multiselect:hover,
+main .form .multiselect:active {
+    border-bottom: 1px solid #b5b9bd;
+}
+main .top-nav {
+    display: flex;
+    flex-flow: wrap;
+    padding-top: 20px;
+}
+main .error {
+    padding: 15px;
+    margin: 0;
+}
+main .pagination {
+    display: flex;
+    align-items: center;
+    padding: 25px 0;
+}
+main .pagination a {
+    display: inline-flex;
+    text-decoration: none;
+    background-color: #758497;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 4px;
+    padding: 7px 10px;
+}
+main .pagination a:hover {
+    background-color: #6d7c90;
+}
+main .pagination a:first-child {
+    margin-right: 10px;
+}
+main .pagination a:last-child {
+    margin-left: 10px;
+}
+main .pagination span {
+    font-weight: 600;
+}
+main .media-page .media {
+    display: flex;
+    flex-flow: wrap;
+    padding: 15px;
+}
+main .media-page .media .image {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid #e3e4e6;
+    padding: 10px;
+    width: 150px;
+    height: 135px;
+    margin: 0 15px 50px 0;
+}
+main .media-page .media .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all ease 0.3s;
+}
+main .media-page .media .image::after {
+    content: attr(data-title);
+    display: block;
+    position: absolute;
+    color: #6e7581;
+    font-size: 14px;
+    font-weight: 500;
+    top: calc(100% + 5px);
+    left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+main .media-page .media .image:hover {
+    border: 1px solid #d0d3d5;
+}
+main .media-page .media .image:hover img {
+    transform: scale(1.05);
+}
+main .media-page .media .image:hover .title {
+    color: #5c6471;
+}
+main .order-details .order-detail {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    word-break: break-all;
+}
+main .order-details .order-detail h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+main .order-details .order-detail p {
+    padding: 0;
+    margin: 0;
+}
+main .order-table {
+    margin: 0;
+}
+main .order-table .item-list-end {
+    border-bottom: 1px solid #f0f1f2;
+}
+main .order-table .subtotal {
+    padding-top: 20px;
+}
+main .order-table .subtotal,
+main .order-table .shipping,
+main .order-table .total {
+    text-align: right;
+    font-weight: 500;
+    font-size: 14px;
+}
+main .order-table .num {
+    text-align: right;
+}
+main .manage-order-table input,
+main .manage-order-table select {
+    border: 0;
+    padding: 5px 0;
+    height: 40px;
+    background: 0 0;
+    width: 90%;
+    border-bottom: 1px solid #dedfe1;
+}
+main .manage-order-table .add-item {
+    display: inline-block;
+    text-decoration: none;
+    color: #676d72;
+    padding: 25px 0;
+}
+main .manage-order-table .add-item i {
+    padding-right: 5px;
+}
+main .manage-order-table .add-item:hover {
+    color: #4f5357;
+}
+main .manage-order-table .delete-item {
+    cursor: pointer;
+    color: #676d72;
+}
+main .manage-order-table .delete-item:hover {
+    color: #b44a4a;
+}
+.table {
+    overflow-x: auto;
+    padding: 0 10px;
+}
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table table thead td {
+    font-weight: 600;
+    font-size: 14px;
+    padding: 15px 0;
+}
+.table table thead td a {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+.table table thead td i {
+    padding-left: 5px;
+}
+.table table thead tr {
+    border-bottom: 1px solid #f0f1f2;
+}
+.table table tbody tr:first-child td {
+    padding-top: 10px;
+}
+.table table tbody td {
+    padding: 8px 0;
+}
+.table table tbody .img {
+    padding: 1px 0;
+}
+.table table tbody .rrp {
+    color: #e26060;
+}
+.product-media-tab,
+.product-options-tab,
+.product-downloads-tab {
+    max-width: 800px;
+}
+.product-media-tab .product-media,
+.product-media-tab .product-option,
+.product-media-tab .product-download,
+.product-options-tab .product-media,
+.product-options-tab .product-option,
+.product-options-tab .product-download,
+.product-downloads-tab .product-media,
+.product-downloads-tab .product-option,
+.product-downloads-tab .product-download {
+    display: flex;
+    border-right: 4px solid #e8ebee;
+    margin-bottom: 15px;
+}
+.product-media-tab .product-media:first-child,
+.product-media-tab .product-option:first-child,
+.product-media-tab .product-download:first-child,
+.product-options-tab .product-media:first-child,
+.product-options-tab .product-option:first-child,
+.product-options-tab .product-download:first-child,
+.product-downloads-tab .product-media:first-child,
+.product-downloads-tab .product-option:first-child,
+.product-downloads-tab .product-download:first-child {
+    border-right: 4px solid #72a0d4;
+}
+.product-media-tab .product-media:first-child .move-up,
+.product-media-tab .product-option:first-child .move-up,
+.product-media-tab .product-download:first-child .move-up,
+.product-options-tab .product-media:first-child .move-up,
+.product-options-tab .product-option:first-child .move-up,
+.product-options-tab .product-download:first-child .move-up,
+.product-downloads-tab .product-media:first-child .move-up,
+.product-downloads-tab .product-option:first-child .move-up,
+.product-downloads-tab .product-download:first-child .move-up {
+    display: none;
+}
+.product-media-tab .product-media:last-child .move-down,
+.product-media-tab .product-option:last-child .move-down,
+.product-media-tab .product-download:last-child .move-down,
+.product-options-tab .product-media:last-child .move-down,
+.product-options-tab .product-option:last-child .move-down,
+.product-options-tab .product-download:last-child .move-down,
+.product-downloads-tab .product-media:last-child .move-down,
+.product-downloads-tab .product-option:last-child .move-down,
+.product-downloads-tab .product-download:last-child .move-down {
+    display: none;
+}
+.product-media-tab .product-media .media-index,
+.product-media-tab .product-media .option-index,
+.product-media-tab .product-media .download-index,
+.product-media-tab .product-option .media-index,
+.product-media-tab .product-option .option-index,
+.product-media-tab .product-option .download-index,
+.product-media-tab .product-download .media-index,
+.product-media-tab .product-download .option-index,
+.product-media-tab .product-download .download-index,
+.product-options-tab .product-media .media-index,
+.product-options-tab .product-media .option-index,
+.product-options-tab .product-media .download-index,
+.product-options-tab .product-option .media-index,
+.product-options-tab .product-option .option-index,
+.product-options-tab .product-option .download-index,
+.product-options-tab .product-download .media-index,
+.product-options-tab .product-download .option-index,
+.product-options-tab .product-download .download-index,
+.product-downloads-tab .product-media .media-index,
+.product-downloads-tab .product-media .option-index,
+.product-downloads-tab .product-media .download-index,
+.product-downloads-tab .product-option .media-index,
+.product-downloads-tab .product-option .option-index,
+.product-downloads-tab .product-option .download-index,
+.product-downloads-tab .product-download .media-index,
+.product-downloads-tab .product-download .option-index,
+.product-downloads-tab .product-download .download-index {
+    display: flex;
+    color: #bcc0c4;
+    font-weight: 500;
+    align-items: center;
+    padding-right: 15px;
+    font-weight: 14px;
+    width: 30px;
+}
+.product-media-tab .product-media .media-img,
+.product-media-tab .product-option .media-img,
+.product-media-tab .product-download .media-img,
+.product-options-tab .product-media .media-img,
+.product-options-tab .product-option .media-img,
+.product-options-tab .product-download .media-img,
+.product-downloads-tab .product-media .media-img,
+.product-downloads-tab .product-option .media-img,
+.product-downloads-tab .product-download .media-img {
+    text-decoration: none;
+    display: flex;
+    height: 70px;
+    width: 100px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.product-media-tab .product-media .media-img img,
+.product-media-tab .product-option .media-img img,
+.product-media-tab .product-download .media-img img,
+.product-options-tab .product-media .media-img img,
+.product-options-tab .product-option .media-img img,
+.product-options-tab .product-download .media-img img,
+.product-downloads-tab .product-media .media-img img,
+.product-downloads-tab .product-option .media-img img,
+.product-downloads-tab .product-download .media-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.product-media-tab .product-media .media-text,
+.product-media-tab .product-media .option-text,
+.product-media-tab .product-media .download-text,
+.product-media-tab .product-option .media-text,
+.product-media-tab .product-option .option-text,
+.product-media-tab .product-option .download-text,
+.product-media-tab .product-download .media-text,
+.product-media-tab .product-download .option-text,
+.product-media-tab .product-download .download-text,
+.product-options-tab .product-media .media-text,
+.product-options-tab .product-media .option-text,
+.product-options-tab .product-media .download-text,
+.product-options-tab .product-option .media-text,
+.product-options-tab .product-option .option-text,
+.product-options-tab .product-option .download-text,
+.product-options-tab .product-download .media-text,
+.product-options-tab .product-download .option-text,
+.product-options-tab .product-download .download-text,
+.product-downloads-tab .product-media .media-text,
+.product-downloads-tab .product-media .option-text,
+.product-downloads-tab .product-media .download-text,
+.product-downloads-tab .product-option .media-text,
+.product-downloads-tab .product-option .option-text,
+.product-downloads-tab .product-option .download-text,
+.product-downloads-tab .product-download .media-text,
+.product-downloads-tab .product-download .option-text,
+.product-downloads-tab .product-download .download-text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    flex: 1;
+    padding-left: 15px;
+}
+.product-media-tab .product-media .media-text h3,
+.product-media-tab .product-media .option-text h3,
+.product-media-tab .product-media .download-text h3,
+.product-media-tab .product-option .media-text h3,
+.product-media-tab .product-option .option-text h3,
+.product-media-tab .product-option .download-text h3,
+.product-media-tab .product-download .media-text h3,
+.product-media-tab .product-download .option-text h3,
+.product-media-tab .product-download .download-text h3,
+.product-options-tab .product-media .media-text h3,
+.product-options-tab .product-media .option-text h3,
+.product-options-tab .product-media .download-text h3,
+.product-options-tab .product-option .media-text h3,
+.product-options-tab .product-option .option-text h3,
+.product-options-tab .product-option .download-text h3,
+.product-options-tab .product-download .media-text h3,
+.product-options-tab .product-download .option-text h3,
+.product-options-tab .product-download .download-text h3,
+.product-downloads-tab .product-media .media-text h3,
+.product-downloads-tab .product-media .option-text h3,
+.product-downloads-tab .product-media .download-text h3,
+.product-downloads-tab .product-option .media-text h3,
+.product-downloads-tab .product-option .option-text h3,
+.product-downloads-tab .product-option .download-text h3,
+.product-downloads-tab .product-download .media-text h3,
+.product-downloads-tab .product-download .option-text h3,
+.product-downloads-tab .product-download .download-text h3 {
+    font-weight: 500;
+}
+.product-media-tab .product-media .media-text p,
+.product-media-tab .product-media .option-text p,
+.product-media-tab .product-media .download-text p,
+.product-media-tab .product-option .media-text p,
+.product-media-tab .product-option .option-text p,
+.product-media-tab .product-option .download-text p,
+.product-media-tab .product-download .media-text p,
+.product-media-tab .product-download .option-text p,
+.product-media-tab .product-download .download-text p,
+.product-options-tab .product-media .media-text p,
+.product-options-tab .product-media .option-text p,
+.product-options-tab .product-media .download-text p,
+.product-options-tab .product-option .media-text p,
+.product-options-tab .product-option .option-text p,
+.product-options-tab .product-option .download-text p,
+.product-options-tab .product-download .media-text p,
+.product-options-tab .product-download .option-text p,
+.product-options-tab .product-download .download-text p,
+.product-downloads-tab .product-media .media-text p,
+.product-downloads-tab .product-media .option-text p,
+.product-downloads-tab .product-media .download-text p,
+.product-downloads-tab .product-option .media-text p,
+.product-downloads-tab .product-option .option-text p,
+.product-downloads-tab .product-option .download-text p,
+.product-downloads-tab .product-download .media-text p,
+.product-downloads-tab .product-download .option-text p,
+.product-downloads-tab .product-download .download-text p {
+    margin: 0;
+    color: #8d9398;
+    font-size: 14px;
+}
+.product-media-tab .product-media .media-position,
+.product-media-tab .product-media .option-position,
+.product-media-tab .product-media .download-position,
+.product-media-tab .product-option .media-position,
+.product-media-tab .product-option .option-position,
+.product-media-tab .product-option .download-position,
+.product-media-tab .product-download .media-position,
+.product-media-tab .product-download .option-position,
+.product-media-tab .product-download .download-position,
+.product-options-tab .product-media .media-position,
+.product-options-tab .product-media .option-position,
+.product-options-tab .product-media .download-position,
+.product-options-tab .product-option .media-position,
+.product-options-tab .product-option .option-position,
+.product-options-tab .product-option .download-position,
+.product-options-tab .product-download .media-position,
+.product-options-tab .product-download .option-position,
+.product-options-tab .product-download .download-position,
+.product-downloads-tab .product-media .media-position,
+.product-downloads-tab .product-media .option-position,
+.product-downloads-tab .product-media .download-position,
+.product-downloads-tab .product-option .media-position,
+.product-downloads-tab .product-option .option-position,
+.product-downloads-tab .product-option .download-position,
+.product-downloads-tab .product-download .media-position,
+.product-downloads-tab .product-download .option-position,
+.product-downloads-tab .product-download .download-position {
+    display: flex;
+    width: 100px;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+}
+.product-media-tab .product-media .media-position i,
+.product-media-tab .product-media .option-position i,
+.product-media-tab .product-media .download-position i,
+.product-media-tab .product-option .media-position i,
+.product-media-tab .product-option .option-position i,
+.product-media-tab .product-option .download-position i,
+.product-media-tab .product-download .media-position i,
+.product-media-tab .product-download .option-position i,
+.product-media-tab .product-download .download-position i,
+.product-options-tab .product-media .media-position i,
+.product-options-tab .product-media .option-position i,
+.product-options-tab .product-media .download-position i,
+.product-options-tab .product-option .media-position i,
+.product-options-tab .product-option .option-position i,
+.product-options-tab .product-option .download-position i,
+.product-options-tab .product-download .media-position i,
+.product-options-tab .product-download .option-position i,
+.product-options-tab .product-download .download-position i,
+.product-downloads-tab .product-media .media-position i,
+.product-downloads-tab .product-media .option-position i,
+.product-downloads-tab .product-media .download-position i,
+.product-downloads-tab .product-option .media-position i,
+.product-downloads-tab .product-option .option-position i,
+.product-downloads-tab .product-option .download-position i,
+.product-downloads-tab .product-download .media-position i,
+.product-downloads-tab .product-download .option-position i,
+.product-downloads-tab .product-download .download-position i {
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 15px;
+    color: #cbcfd4;
+}
+.product-media-tab .product-media .media-position i:hover,
+.product-media-tab .product-media .option-position i:hover,
+.product-media-tab .product-media .download-position i:hover,
+.product-media-tab .product-option .media-position i:hover,
+.product-media-tab .product-option .option-position i:hover,
+.product-media-tab .product-option .download-position i:hover,
+.product-media-tab .product-download .media-position i:hover,
+.product-media-tab .product-download .option-position i:hover,
+.product-media-tab .product-download .download-position i:hover,
+.product-options-tab .product-media .media-position i:hover,
+.product-options-tab .product-media .option-position i:hover,
+.product-options-tab .product-media .download-position i:hover,
+.product-options-tab .product-option .media-position i:hover,
+.product-options-tab .product-option .option-position i:hover,
+.product-options-tab .product-option .download-position i:hover,
+.product-options-tab .product-download .media-position i:hover,
+.product-options-tab .product-download .option-position i:hover,
+.product-options-tab .product-download .download-position i:hover,
+.product-downloads-tab .product-media .media-position i:hover,
+.product-downloads-tab .product-media .option-position i:hover,
+.product-downloads-tab .product-media .download-position i:hover,
+.product-downloads-tab .product-option .media-position i:hover,
+.product-downloads-tab .product-option .option-position i:hover,
+.product-downloads-tab .product-option .download-position i:hover,
+.product-downloads-tab .product-download .media-position i:hover,
+.product-downloads-tab .product-download .option-position i:hover,
+.product-downloads-tab .product-download .download-position i:hover {
+    color: #afb5bd;
+}
+.product-media-tab .product-media .media-position i.media-delete,
+.product-media-tab .product-media .media-position i.option-delete,
+.product-media-tab .product-media .media-position i.download-delete,
+.product-media-tab .product-media .option-position i.media-delete,
+.product-media-tab .product-media .option-position i.option-delete,
+.product-media-tab .product-media .option-position i.download-delete,
+.product-media-tab .product-media .download-position i.media-delete,
+.product-media-tab .product-media .download-position i.option-delete,
+.product-media-tab .product-media .download-position i.download-delete,
+.product-media-tab .product-option .media-position i.media-delete,
+.product-media-tab .product-option .media-position i.option-delete,
+.product-media-tab .product-option .media-position i.download-delete,
+.product-media-tab .product-option .option-position i.media-delete,
+.product-media-tab .product-option .option-position i.option-delete,
+.product-media-tab .product-option .option-position i.download-delete,
+.product-media-tab .product-option .download-position i.media-delete,
+.product-media-tab .product-option .download-position i.option-delete,
+.product-media-tab .product-option .download-position i.download-delete,
+.product-media-tab .product-download .media-position i.media-delete,
+.product-media-tab .product-download .media-position i.option-delete,
+.product-media-tab .product-download .media-position i.download-delete,
+.product-media-tab .product-download .option-position i.media-delete,
+.product-media-tab .product-download .option-position i.option-delete,
+.product-media-tab .product-download .option-position i.download-delete,
+.product-media-tab .product-download .download-position i.media-delete,
+.product-media-tab .product-download .download-position i.option-delete,
+.product-media-tab .product-download .download-position i.download-delete,
+.product-options-tab .product-media .media-position i.media-delete,
+.product-options-tab .product-media .media-position i.option-delete,
+.product-options-tab .product-media .media-position i.download-delete,
+.product-options-tab .product-media .option-position i.media-delete,
+.product-options-tab .product-media .option-position i.option-delete,
+.product-options-tab .product-media .option-position i.download-delete,
+.product-options-tab .product-media .download-position i.media-delete,
+.product-options-tab .product-media .download-position i.option-delete,
+.product-options-tab .product-media .download-position i.download-delete,
+.product-options-tab .product-option .media-position i.media-delete,
+.product-options-tab .product-option .media-position i.option-delete,
+.product-options-tab .product-option .media-position i.download-delete,
+.product-options-tab .product-option .option-position i.media-delete,
+.product-options-tab .product-option .option-position i.option-delete,
+.product-options-tab .product-option .option-position i.download-delete,
+.product-options-tab .product-option .download-position i.media-delete,
+.product-options-tab .product-option .download-position i.option-delete,
+.product-options-tab .product-option .download-position i.download-delete,
+.product-options-tab .product-download .media-position i.media-delete,
+.product-options-tab .product-download .media-position i.option-delete,
+.product-options-tab .product-download .media-position i.download-delete,
+.product-options-tab .product-download .option-position i.media-delete,
+.product-options-tab .product-download .option-position i.option-delete,
+.product-options-tab .product-download .option-position i.download-delete,
+.product-options-tab .product-download .download-position i.media-delete,
+.product-options-tab .product-download .download-position i.option-delete,
+.product-options-tab .product-download .download-position i.download-delete,
+.product-downloads-tab .product-media .media-position i.media-delete,
+.product-downloads-tab .product-media .media-position i.option-delete,
+.product-downloads-tab .product-media .media-position i.download-delete,
+.product-downloads-tab .product-media .option-position i.media-delete,
+.product-downloads-tab .product-media .option-position i.option-delete,
+.product-downloads-tab .product-media .option-position i.download-delete,
+.product-downloads-tab .product-media .download-position i.media-delete,
+.product-downloads-tab .product-media .download-position i.option-delete,
+.product-downloads-tab .product-media .download-position i.download-delete,
+.product-downloads-tab .product-option .media-position i.media-delete,
+.product-downloads-tab .product-option .media-position i.option-delete,
+.product-downloads-tab .product-option .media-position i.download-delete,
+.product-downloads-tab .product-option .option-position i.media-delete,
+.product-downloads-tab .product-option .option-position i.option-delete,
+.product-downloads-tab .product-option .option-position i.download-delete,
+.product-downloads-tab .product-option .download-position i.media-delete,
+.product-downloads-tab .product-option .download-position i.option-delete,
+.product-downloads-tab .product-option .download-position i.download-delete,
+.product-downloads-tab .product-download .media-position i.media-delete,
+.product-downloads-tab .product-download .media-position i.option-delete,
+.product-downloads-tab .product-download .media-position i.download-delete,
+.product-downloads-tab .product-download .option-position i.media-delete,
+.product-downloads-tab .product-download .option-position i.option-delete,
+.product-downloads-tab .product-download .option-position i.download-delete,
+.product-downloads-tab .product-download .download-position i.media-delete,
+.product-downloads-tab .product-download .download-position i.option-delete,
+.product-downloads-tab .product-download .download-position i.download-delete {
+    padding-right: 5px;
+    color: #e1e4e6;
+}
+.product-media-tab .product-media .media-position i.media-delete:hover,
+.product-media-tab .product-media .media-position i.option-delete:hover,
+.product-media-tab .product-media .media-position i.download-delete:hover,
+.product-media-tab .product-media .option-position i.media-delete:hover,
+.product-media-tab .product-media .option-position i.option-delete:hover,
+.product-media-tab .product-media .option-position i.download-delete:hover,
+.product-media-tab .product-media .download-position i.media-delete:hover,
+.product-media-tab .product-media .download-position i.option-delete:hover,
+.product-media-tab .product-media .download-position i.download-delete:hover,
+.product-media-tab .product-option .media-position i.media-delete:hover,
+.product-media-tab .product-option .media-position i.option-delete:hover,
+.product-media-tab .product-option .media-position i.download-delete:hover,
+.product-media-tab .product-option .option-position i.media-delete:hover,
+.product-media-tab .product-option .option-position i.option-delete:hover,
+.product-media-tab .product-option .option-position i.download-delete:hover,
+.product-media-tab .product-option .download-position i.media-delete:hover,
+.product-media-tab .product-option .download-position i.option-delete:hover,
+.product-media-tab .product-option .download-position i.download-delete:hover,
+.product-media-tab .product-download .media-position i.media-delete:hover,
+.product-media-tab .product-download .media-position i.option-delete:hover,
+.product-media-tab .product-download .media-position i.download-delete:hover,
+.product-media-tab .product-download .option-position i.media-delete:hover,
+.product-media-tab .product-download .option-position i.option-delete:hover,
+.product-media-tab .product-download .option-position i.download-delete:hover,
+.product-media-tab .product-download .download-position i.media-delete:hover,
+.product-media-tab .product-download .download-position i.option-delete:hover,
+.product-media-tab .product-download .download-position i.download-delete:hover,
+.product-options-tab .product-media .media-position i.media-delete:hover,
+.product-options-tab .product-media .media-position i.option-delete:hover,
+.product-options-tab .product-media .media-position i.download-delete:hover,
+.product-options-tab .product-media .option-position i.media-delete:hover,
+.product-options-tab .product-media .option-position i.option-delete:hover,
+.product-options-tab .product-media .option-position i.download-delete:hover,
+.product-options-tab .product-media .download-position i.media-delete:hover,
+.product-options-tab .product-media .download-position i.option-delete:hover,
+.product-options-tab .product-media .download-position i.download-delete:hover,
+.product-options-tab .product-option .media-position i.media-delete:hover,
+.product-options-tab .product-option .media-position i.option-delete:hover,
+.product-options-tab .product-option .media-position i.download-delete:hover,
+.product-options-tab .product-option .option-position i.media-delete:hover,
+.product-options-tab .product-option .option-position i.option-delete:hover,
+.product-options-tab .product-option .option-position i.download-delete:hover,
+.product-options-tab .product-option .download-position i.media-delete:hover,
+.product-options-tab .product-option .download-position i.option-delete:hover,
+.product-options-tab .product-option .download-position i.download-delete:hover,
+.product-options-tab .product-download .media-position i.media-delete:hover,
+.product-options-tab .product-download .media-position i.option-delete:hover,
+.product-options-tab .product-download .media-position i.download-delete:hover,
+.product-options-tab .product-download .option-position i.media-delete:hover,
+.product-options-tab .product-download .option-position i.option-delete:hover,
+.product-options-tab .product-download .option-position i.download-delete:hover,
+.product-options-tab .product-download .download-position i.media-delete:hover,
+.product-options-tab .product-download .download-position i.option-delete:hover,
+.product-options-tab .product-download .download-position i.download-delete:hover,
+.product-downloads-tab .product-media .media-position i.media-delete:hover,
+.product-downloads-tab .product-media .media-position i.option-delete:hover,
+.product-downloads-tab .product-media .media-position i.download-delete:hover,
+.product-downloads-tab .product-media .option-position i.media-delete:hover,
+.product-downloads-tab .product-media .option-position i.option-delete:hover,
+.product-downloads-tab .product-media .option-position i.download-delete:hover,
+.product-downloads-tab .product-media .download-position i.media-delete:hover,
+.product-downloads-tab .product-media .download-position i.option-delete:hover,
+.product-downloads-tab .product-media .download-position i.download-delete:hover,
+.product-downloads-tab .product-option .media-position i.media-delete:hover,
+.product-downloads-tab .product-option .media-position i.option-delete:hover,
+.product-downloads-tab .product-option .media-position i.download-delete:hover,
+.product-downloads-tab .product-option .option-position i.media-delete:hover,
+.product-downloads-tab .product-option .option-position i.option-delete:hover,
+.product-downloads-tab .product-option .option-position i.download-delete:hover,
+.product-downloads-tab .product-option .download-position i.media-delete:hover,
+.product-downloads-tab .product-option .download-position i.option-delete:hover,
+.product-downloads-tab .product-option .download-position i.download-delete:hover,
+.product-downloads-tab .product-download .media-position i.media-delete:hover,
+.product-downloads-tab .product-download .media-position i.option-delete:hover,
+.product-downloads-tab .product-download .media-position i.download-delete:hover,
+.product-downloads-tab .product-download .option-position i.media-delete:hover,
+.product-downloads-tab .product-download .option-position i.option-delete:hover,
+.product-downloads-tab .product-download .option-position i.download-delete:hover,
+.product-downloads-tab .product-download .download-position i.media-delete:hover,
+.product-downloads-tab .product-download .download-position i.option-delete:hover,
+.product-downloads-tab .product-download .download-position i.download-delete:hover {
+    color: #b44a4a;
+}
+.product-media-tab .product-media .media-position i.option-edit,
+.product-media-tab .product-media .option-position i.option-edit,
+.product-media-tab .product-media .download-position i.option-edit,
+.product-media-tab .product-option .media-position i.option-edit,
+.product-media-tab .product-option .option-position i.option-edit,
+.product-media-tab .product-option .download-position i.option-edit,
+.product-media-tab .product-download .media-position i.option-edit,
+.product-media-tab .product-download .option-position i.option-edit,
+.product-media-tab .product-download .download-position i.option-edit,
+.product-options-tab .product-media .media-position i.option-edit,
+.product-options-tab .product-media .option-position i.option-edit,
+.product-options-tab .product-media .download-position i.option-edit,
+.product-options-tab .product-option .media-position i.option-edit,
+.product-options-tab .product-option .option-position i.option-edit,
+.product-options-tab .product-option .download-position i.option-edit,
+.product-options-tab .product-download .media-position i.option-edit,
+.product-options-tab .product-download .option-position i.option-edit,
+.product-options-tab .product-download .download-position i.option-edit,
+.product-downloads-tab .product-media .media-position i.option-edit,
+.product-downloads-tab .product-media .option-position i.option-edit,
+.product-downloads-tab .product-media .download-position i.option-edit,
+.product-downloads-tab .product-option .media-position i.option-edit,
+.product-downloads-tab .product-option .option-position i.option-edit,
+.product-downloads-tab .product-option .download-position i.option-edit,
+.product-downloads-tab .product-download .media-position i.option-edit,
+.product-downloads-tab .product-download .option-position i.option-edit,
+.product-downloads-tab .product-download .download-position i.option-edit {
+    font-size: 14px;
+    padding-right: 5px;
+    color: #e1e4e6;
+}
+.product-media-tab .product-media .media-position i.option-edit:hover,
+.product-media-tab .product-media .option-position i.option-edit:hover,
+.product-media-tab .product-media .download-position i.option-edit:hover,
+.product-media-tab .product-option .media-position i.option-edit:hover,
+.product-media-tab .product-option .option-position i.option-edit:hover,
+.product-media-tab .product-option .download-position i.option-edit:hover,
+.product-media-tab .product-download .media-position i.option-edit:hover,
+.product-media-tab .product-download .option-position i.option-edit:hover,
+.product-media-tab .product-download .download-position i.option-edit:hover,
+.product-options-tab .product-media .media-position i.option-edit:hover,
+.product-options-tab .product-media .option-position i.option-edit:hover,
+.product-options-tab .product-media .download-position i.option-edit:hover,
+.product-options-tab .product-option .media-position i.option-edit:hover,
+.product-options-tab .product-option .option-position i.option-edit:hover,
+.product-options-tab .product-option .download-position i.option-edit:hover,
+.product-options-tab .product-download .media-position i.option-edit:hover,
+.product-options-tab .product-download .option-position i.option-edit:hover,
+.product-options-tab .product-download .download-position i.option-edit:hover,
+.product-downloads-tab .product-media .media-position i.option-edit:hover,
+.product-downloads-tab .product-media .option-position i.option-edit:hover,
+.product-downloads-tab .product-media .download-position i.option-edit:hover,
+.product-downloads-tab .product-option .media-position i.option-edit:hover,
+.product-downloads-tab .product-option .option-position i.option-edit:hover,
+.product-downloads-tab .product-option .download-position i.option-edit:hover,
+.product-downloads-tab .product-download .media-position i.option-edit:hover,
+.product-downloads-tab .product-download .option-position i.option-edit:hover,
+.product-downloads-tab .product-download .download-position i.option-edit:hover {
+    color: #4ab46d;
+}
+.link1,
+.link2 {
+    text-decoration: none;
+    color: #0060ba;
+    border-bottom: 1px dotted;
+    margin: 0 5px 0 0;
+}
+.link1:hover,
+.link2:hover {
+    color: #003260;
+}
+.link2 {
+    color: #ba0000;
+}
+.link2:hover {
+    color: #600000;
+}
+.title1 {
+    color: #6a6e75;
+    border-bottom: 1px solid #f0f1f2;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    font-weight: 500;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    appearance: none;
+    cursor: pointer;
+    border: 0;
+    background: #4a79b4;
+    color: #fff;
+    padding: 0 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    height: 38px;
+}
+.btn:hover {
+    background: #4672a9;
+}
+.btn.green {
+    background: #4ab46d;
+}
+.btn.green:hover {
+    background: #46a966;
+}
+.btn.red {
+    background: #b44a4a;
+}
+.btn.red:hover {
+    background: #a94646;
+}
+.btn.alt {
+    color: #75797e;
+    border: 1px solid #d4dbde;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.03);
+    background: #f1f3f4;
+}
+.btn.alt:hover {
+    background: #eef1f2;
+}
+.btn.disabled {
+    background: #b1b3b4;
+}
+.btn.disabled:hover {
+    background: #a9abad;
+}
+.btn.small {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+.btn .loader,
+.btn .loader::after {
+    width: 15px;
+    height: 15px;
+}
+.btn .loader {
+    margin: 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    border-right: 2px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    border-left: 2px solid rgba(255, 255, 255, 0.9);
+}
+.dialog {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+}
+.dialog .content {
+    transform: scale(0.5);
+    background-color: #fff;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.03);
+    width: 400px;
+}
+.dialog .content .heading {
+    display: flex;
+    padding: 20px;
+    font-weight: 600;
+    justify-content: space-between;
+    border-bottom: 1px solid #ebeced;
+    align-items: center;
+}
+.dialog .content .heading span {
+    font-size: 24px;
+    line-height: 24px;
+    padding-bottom: 4px;
+    cursor: pointer;
+    color: #959faf;
+}
+.dialog .content .heading span:hover {
+    color: #606c7e;
+}
+.dialog .content .footer {
+    border-top: 1px solid #ebeced;
+    background-color: #fbfbfb;
+}
+.dialog.large .content {
+    width: 900px;
+}
+.dialog.medium .content {
+    width: 600px;
+}
+.dialog.open {
+    display: flex;
+}
+.dialog.open .content {
+    transform: scale(1);
+    transition: all 0.2s ease;
+}
+.media-library-modal .media {
+    display: flex;
+}
+.media-library-modal .media .list {
+    display: flex;
+    flex-flow: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 75%;
+    height: 460px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding: 10px;
+}
+.media-library-modal .media .list > a {
+    position: relative;
+    display: flex;
+    height: 100px;
+    width: 23.4%;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin: 5px;
+}
+.media-library-modal .media .list > a img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.media-library-modal .media .list > a.selected {
+    border: 2px solid #237fe8;
+}
+.media-library-modal .media .list > a.selected::before {
+    position: absolute;
+    font-family: "font awesome 5 free";
+    content: "\f00c";
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 900;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    background-color: #237fe8;
+    font-size: 12px;
+    padding: 4px 4px 1px;
+}
+.media-library-modal .media .list .list-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 5px 5px 10px;
+}
+.media-library-modal .media .list .list-header input {
+    border: 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #dedfe1;
+}
+.media-library-modal .media .details {
+    width: 25%;
+    padding: 15px;
+    background-color: #f9f9fa;
+    border-left: 1px solid #ebeced;
+    height: 460px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.media-library-modal .media .details h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    word-break: break-all;
+}
+.media-library-modal .media .details label {
+    display: block;
+    margin: 0;
+    padding: 15px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+.media-library-modal .media .details img {
+    max-width: 100%;
+    max-height: 100px;
+    padding-top: 10px;
+}
+.media-library-modal .media .details input {
+    border: 0;
+    padding: 5px 0;
+    background: 0 0;
+    width: 100%;
+    font-size: 14px;
+    border-bottom: 1px solid #dedfe1;
+}
+.media-library-modal .media .details .media-links {
+    padding-top: 15px;
+}
+.media-library-modal .media .details .media-links .save-media {
+    display: none;
+}
+.media-library-modal .media .details .media-links a {
+    font-size: 14px;
+}
+.media-library-modal .media .list::-webkit-scrollbar,
+.media-library-modal .media .details::-webkit-scrollbar {
+    width: 6px;
+    background: #fff;
+}
+.media-library-modal .media .list::-webkit-scrollbar-thumb,
+.media-library-modal .media .details::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+}
+.options-modal .body {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+}
+.options-modal .body input[type="text"],
+.options-modal .body input[type="number"],
+.options-modal .body input[type="datetime-local"],
+.options-modal .body select {
+    border: 0;
+    padding: 10px 0;
+    height: 40px;
+    background: 0 0;
+    width: 100%;
+    border-bottom: 1px solid #dedfe1;
+}
+.options-modal .body select {
+    padding: 0;
+}
+.options-modal .body .option-header {
+    display: flex;
+    width: 70%;
+}
+.options-modal .body .option-header input {
+    margin-right: 10px;
+}
+.options-modal .body .option-header label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+.options-modal .body .option-content {
+    display: none;
+    flex-flow: column;
+}
+.options-modal .body .table {
+    width: 100%;
+    padding: 0;
+}
+.options-modal .body .table .input-group {
+    display: flex;
+}
+.options-modal .body .table tbody td input {
+    font-size: 14px;
+}
+.options-modal .body .table tbody td {
+    padding-right: 10px;
+}
+.options-modal .body .table tbody td .modifier {
+    width: 45px;
+}
+.options-modal .body .table tbody td .modifier ~ input {
+    padding-left: 5px;
+}
+.options-modal .body .add-option-value-btn {
+    text-decoration: none;
+    font-weight: 400;
+    color: #676d72;
+    font-size: 14px;
+    padding: 15px 0;
+}
+.options-modal .body .add-option-value-btn i {
+    padding-right: 5px;
+}
+.options-modal .body .add-option-value-btn:hover {
+    color: #4f5357;
+}
+.options-modal .body .remove-option-value {
+    cursor: pointer;
+    color: #676d72;
+}
+.options-modal .body .remove-option-value:hover {
+    color: #b44a4a;
+}
+.downloads-modal .body {
+    padding: 20px;
+}
+.downloads-modal .body input {
+    border: 0;
+    padding: 10px 0;
+    height: 40px;
+    font-size: 14px;
+    background: 0 0;
+    width: 100%;
+    border-bottom: 1px solid #dedfe1;
+}
+.downloads-modal .body label {
+    font-weight: 500;
+}
+.edit-media-modal .body {
+    padding: 20px;
+}
+.edit-media-modal .body label {
+    display: block;
+    margin: 0;
+    padding: 15px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+.edit-media-modal .body img {
+    max-width: 100%;
+    max-height: 100px;
+    padding-top: 10px;
+}
+.edit-media-modal .body input {
+    border: 0;
+    padding: 5px 0;
+    background: 0 0;
+    width: 100%;
+    font-size: 14px;
+    border-bottom: 1px solid #dedfe1;
+}
+.loader,
+.loader::after {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.loader {
+    position: relative;
+    margin: 60px auto;
+    border-top: 2px solid rgba(154, 158, 162, 0.2);
+    border-right: 2px solid rgba(154, 158, 162, 0.2);
+    border-bottom: 2px solid rgba(154, 158, 162, 0.2);
+    border-left: 2px solid #9a9ea2;
+    transform: translateZ(0);
+    animation: loader 1.1s infinite linear;
+}
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.pad-1 {
+    padding: 5px;
+}
+.mar-1 {
+    margin: 5px;
+}
+.pad-2 {
+    padding: 10px;
+}
+.mar-2 {
+    margin: 10px;
+}
+.pad-3 {
+    padding: 15px;
+}
+.mar-3 {
+    margin: 15px;
+}
+.pad-4 {
+    padding: 20px;
+}
+.mar-4 {
+    margin: 20px;
+}
+.pad-5 {
+    padding: 25px;
+}
+.mar-5 {
+    margin: 25px;
+}
+.pad-bot-1 {
+    padding-bottom: 5px;
+}
+.pad-top-1 {
+    padding-top: 5px;
+}
+.pad-left-1 {
+    padding-left: 5px;
+}
+.pad-right-1 {
+    padding-right: 5px;
+}
+.pad-x-1 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.pad-y-1 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.mar-bot-1 {
+    margin-bottom: 5px;
+}
+.mar-top-1 {
+    margin-top: 5px;
+}
+.mar-left-1 {
+    margin-left: 5px;
+}
+.mar-right-1 {
+    margin-right: 5px;
+}
+.mar-x-1 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.mar-y-1 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.pad-bot-2 {
+    padding-bottom: 10px;
+}
+.pad-top-2 {
+    padding-top: 10px;
+}
+.pad-left-2 {
+    padding-left: 10px;
+}
+.pad-right-2 {
+    padding-right: 10px;
+}
+.pad-x-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.pad-y-2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.mar-bot-2 {
+    margin-bottom: 10px;
+}
+.mar-top-2 {
+    margin-top: 10px;
+}
+.mar-left-2 {
+    margin-left: 10px;
+}
+.mar-right-2 {
+    margin-right: 10px;
+}
+.mar-x-2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.mar-y-2 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.pad-bot-3 {
+    padding-bottom: 15px;
+}
+.pad-top-3 {
+    padding-top: 15px;
+}
+.pad-left-3 {
+    padding-left: 15px;
+}
+.pad-right-3 {
+    padding-right: 15px;
+}
+.pad-x-3 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.pad-y-3 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.mar-bot-3 {
+    margin-bottom: 15px;
+}
+.mar-top-3 {
+    margin-top: 15px;
+}
+.mar-left-3 {
+    margin-left: 15px;
+}
+.mar-right-3 {
+    margin-right: 15px;
+}
+.mar-x-3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.mar-y-3 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.pad-bot-4 {
+    padding-bottom: 20px;
+}
+.pad-top-4 {
+    padding-top: 20px;
+}
+.pad-left-4 {
+    padding-left: 20px;
+}
+.pad-right-4 {
+    padding-right: 20px;
+}
+.pad-x-4 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.pad-y-4 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.mar-bot-4 {
+    margin-bottom: 20px;
+}
+.mar-top-4 {
+    margin-top: 20px;
+}
+.mar-left-4 {
+    margin-left: 20px;
+}
+.mar-right-4 {
+    margin-right: 20px;
+}
+.mar-x-4 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.mar-y-4 {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.pad-bot-5 {
+    padding-bottom: 25px;
+}
+.pad-top-5 {
+    padding-top: 25px;
+}
+.pad-left-5 {
+    padding-left: 25px;
+}
+.pad-right-5 {
+    padding-right: 25px;
+}
+.pad-x-5 {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.pad-y-5 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.mar-bot-5 {
+    margin-bottom: 25px;
+}
+.mar-top-5 {
+    margin-top: 25px;
+}
+.mar-left-5 {
+    margin-left: 25px;
+}
+.mar-right-5 {
+    margin-right: 25px;
+}
+.mar-x-5 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.mar-y-5 {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+@media screen and (max-width: 1000px) {
+    header {
+        padding-left: 0;
+    }
+    .responsive-hidden {
+        display: none !important;
+    }
+    .responsive-width-100 {
+        width: 100% !important;
+        flex: auto !important;
+        flex-basis: 100% !important;
+    }
+    .responsive-flex-column {
+        flex-flow: column;
+    }
+    .responsive-flex-wrap {
+        flex-flow: wrap;
+    }
+    .responsive-flex {
+        display: flex;
+    }
+    main {
+        padding: 70px 7px 20px;
+    }
+    main .content-header {
+        max-width: 100%;
+    }
+    main .content-header form {
+        padding-top: 10px;
+    }
+    main .content-header form .search input,
+    main .content-header form > select {
+        padding-right: 0;
+        margin-left: 0;
+    }
+    main .content-block {
+        padding: 5px;
+    }
+    main .content-block .block-header {
+        padding-top: 10px;
+    }
+    main .dashboard {
+        flex-flow: column;
+    }
+    main .dashboard .stat {
+        width: 100%;
+    }
+    .responsive-pad-1 {
+        padding: 5px;
+    }
+    .responsive-mar-1 {
+        margin: 5px;
+    }
+    .responsive-pad-2 {
+        padding: 10px;
+    }
+    .responsive-mar-2 {
+        margin: 10px;
+    }
+    .responsive-pad-3 {
+        padding: 15px;
+    }
+    .responsive-mar-3 {
+        margin: 15px;
+    }
+    .responsive-pad-4 {
+        padding: 20px;
+    }
+    .responsive-mar-4 {
+        margin: 20px;
+    }
+    .responsive-pad-5 {
+        padding: 25px;
+    }
+    .responsive-mar-5 {
+        margin: 25px;
+    }
+    .responsive-pad-bot-1 {
+        padding-bottom: 5px;
+    }
+    .responsive-pad-top-1 {
+        padding-top: 5px;
+    }
+    .responsive-pad-left-1 {
+        padding-left: 5px;
+    }
+    .responsive-pad-right-1 {
+        padding-right: 5px;
+    }
+    .responsive-pad-x-1 {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .responsive-pad-y-1 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .responsive-mar-bot-1 {
+        margin-bottom: 5px;
+    }
+    .responsive-mar-top-1 {
+        margin-top: 5px;
+    }
+    .responsive-mar-left-1 {
+        margin-left: 5px;
+    }
+    .responsive-mar-right-1 {
+        margin-right: 5px;
+    }
+    .responsive-mar-x-1 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .responsive-mar-y-1 {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .responsive-pad-bot-2 {
+        padding-bottom: 10px;
+    }
+    .responsive-pad-top-2 {
+        padding-top: 10px;
+    }
+    .responsive-pad-left-2 {
+        padding-left: 10px;
+    }
+    .responsive-pad-right-2 {
+        padding-right: 10px;
+    }
+    .responsive-pad-x-2 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .responsive-pad-y-2 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .responsive-mar-bot-2 {
+        margin-bottom: 10px;
+    }
+    .responsive-mar-top-2 {
+        margin-top: 10px;
+    }
+    .responsive-mar-left-2 {
+        margin-left: 10px;
+    }
+    .responsive-mar-right-2 {
+        margin-right: 10px;
+    }
+    .responsive-mar-x-2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .responsive-mar-y-2 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .responsive-pad-bot-3 {
+        padding-bottom: 15px;
+    }
+    .responsive-pad-top-3 {
+        padding-top: 15px;
+    }
+    .responsive-pad-left-3 {
+        padding-left: 15px;
+    }
+    .responsive-pad-right-3 {
+        padding-right: 15px;
+    }
+    .responsive-pad-x-3 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .responsive-pad-y-3 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .responsive-mar-bot-3 {
+        margin-bottom: 15px;
+    }
+    .responsive-mar-top-3 {
+        margin-top: 15px;
+    }
+    .responsive-mar-left-3 {
+        margin-left: 15px;
+    }
+    .responsive-mar-right-3 {
+        margin-right: 15px;
+    }
+    .responsive-mar-x-3 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .responsive-mar-y-3 {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .responsive-pad-bot-4 {
+        padding-bottom: 20px;
+    }
+    .responsive-pad-top-4 {
+        padding-top: 20px;
+    }
+    .responsive-pad-left-4 {
+        padding-left: 20px;
+    }
+    .responsive-pad-right-4 {
+        padding-right: 20px;
+    }
+    .responsive-pad-x-4 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .responsive-pad-y-4 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .responsive-mar-bot-4 {
+        margin-bottom: 20px;
+    }
+    .responsive-mar-top-4 {
+        margin-top: 20px;
+    }
+    .responsive-mar-left-4 {
+        margin-left: 20px;
+    }
+    .responsive-mar-right-4 {
+        margin-right: 20px;
+    }
+    .responsive-mar-x-4 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .responsive-mar-y-4 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .responsive-pad-bot-5 {
+        padding-bottom: 25px;
+    }
+    .responsive-pad-top-5 {
+        padding-top: 25px;
+    }
+    .responsive-pad-left-5 {
+        padding-left: 25px;
+    }
+    .responsive-pad-right-5 {
+        padding-right: 25px;
+    }
+    .responsive-pad-x-5 {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .responsive-pad-y-5 {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .responsive-mar-bot-5 {
+        margin-bottom: 25px;
+    }
+    .responsive-mar-top-5 {
+        margin-top: 25px;
+    }
+    .responsive-mar-left-5 {
+        margin-left: 25px;
+    }
+    .responsive-mar-right-5 {
+        margin-right: 25px;
+    }
+    .responsive-mar-x-5 {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .responsive-mar-y-5 {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    .media-library-modal {
+        padding: 10px;
+    }
+    .media-library-modal .media {
+        flex-flow: column;
+    }
+    .media-library-modal .media .list {
+        width: 100%;
+        height: 220px;
+    }
+    .media-library-modal .media .list > a {
+        width: 29%;
+    }
+    .media-library-modal .media .list .list-header input {
+        max-width: 150px;
+        width: auto;
+    }
+    .media-library-modal .media .details {
+        width: 100%;
+        height: 110px;
+    }
+    .options-modal {
+        padding: 10px;
+    }
+    .options-modal .body {
+        max-height: 260px;
+    }
+    .options-modal .body .option-header {
+        width: 100%;
+    }
+    .options-modal .body .table thead td {
+        font-size: 12px;
+    }
+    .options-modal .body .table tbody td input {
+        font-size: 12px;
+    }
+    .options-modal .body .table tbody td {
+        padding-right: 5px;
+    }
+    .options-modal .body .table tbody td .modifier {
+        width: 45px;
+    }
+    .options-modal .body .table tbody td .modifier ~ input {
+        padding-left: 0;
+    }
+    .downloads-modal {
+        padding: 10px;
+    }
+    .content-block-wrapper {
+        flex-flow: column;
+    }
+    .content-block-wrapper .content-block {
+        margin: 15px 0 0 !important;
+    }
+}
