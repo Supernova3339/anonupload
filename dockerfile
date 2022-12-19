@@ -1,7 +1,7 @@
 FROM php:7.4-apache
 COPY . /var/www/html
 RUN docker-php-ext-install pdo_mysql
-apt-get install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
