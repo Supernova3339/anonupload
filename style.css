@@ -1,0 +1,311 @@
+html, body, div, input, span, a, select, textarea, option, h1, h2, h3, h4, main, aside, article, section, header, p, footer, nav, pre {
+    box-sizing: border-box;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+html {
+    background: #f8f9f9 linear-gradient(0deg, #f8f9f9 0%, #f8f9f9 80%, #51b47c 80%, #51b47c 100%) no-repeat;
+    padding: 30px;
+    height: 100%;
+}
+input,textarea,select {
+    outline: 0;
+}
+h1 {
+    margin: 0;
+    padding: 35px 25px 25px 25px;
+    font-size: 20px;
+    color: #6a737f;
+    font-weight: 600;
+}
+h1 i {
+    padding-right: 10px;
+    font-size: 24px;
+}
+.installer-form {
+    background-color: #fff;
+    width: 500px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.2);
+}
+.installer-form .fields {
+    position: relative;
+    padding: 20px;
+}
+.installer-form select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #c7c9cb 50%), linear-gradient(135deg, #c7c9cb 50%, transparent 50%), linear-gradient(to right, #dfe0e0, #dfe0e0);
+    background-position: calc(100% - 20px) 20px, calc(100% - 15px) 20px, calc(100% - 40px) 10px;
+    background-size: 5px 5px, 5px 5px, 1px 25px;
+    background-repeat: no-repeat;
+}
+.installer-form select option:first-child {
+    display: none;
+ }
+.installer-form input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #ddd;
+    filter: invert(0.8);
+}
+.installer-form input[type="text"], 
+.installer-form input[type="password"], 
+.installer-form input[type="email"],
+.installer-form input[type="date"],
+.installer-form input[type="tel"],
+.installer-form select {
+    display: flex;
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #dfe0e0;
+    width: 100%;
+    flex-basis: 100%;
+    height: 47px;
+}
+.installer-form input[type="text"]:focus, 
+.installer-form input[type="email"]:focus,
+.installer-form input[type="tel"]:focus,
+.installer-form input[type="date"]:focus,
+.installer-form select:focus {
+    border: 1px solid #c6c7c7;
+}
+.installer-form input[type="text"]::placeholder, 
+.installer-form input[type="email"]::placeholder, 
+.installer-form input[type="tel"]::placeholder, 
+.installer-form input[type="date"]:invalid, 
+.installer-form textarea::placeholder,
+.installer-form select:invalid {
+    color: #858688;
+}
+.installer-form textarea {
+    resize: none;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #dfe0e0;
+    width: 100%;
+    height: 150px;
+}
+.installer-form textarea:focus {
+    border: 1px solid #c6c7c7;
+}
+.installer-form .buttons {
+    padding: 20px;
+    border-top: 1px solid #eceff2;
+}
+.installer-form .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 0;
+    background-color: #c9704c;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-right: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+.installer-form .btn:hover {
+    background-color: #c26c4a;
+}
+.installer-form .btn.alt {
+    background-color: transparent;
+    border: 1px solid #c9704c;
+    color: #c9704c;
+}
+.installer-form .btn.alt:hover {
+    border: 1px solid #c26c4a;
+    color: #c26c4a;  
+}
+.installer-form input[name="email"] {
+    position: relative;
+    display: block;
+}
+.installer-form .field {
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.installer-form label, .installer-form p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #8e939b;
+}
+.installer-form .field i {
+    position: absolute;
+    color: #dfe2e5;
+    top: 25px;
+    left: 15px;
+    z-index: 10;
+}
+.installer-form .field i ~ input {
+    padding-left: 45px !important;
+}
+.installer-form .responses {
+    padding: 15px;
+    margin: 0;
+}
+.installer-form .fields .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.installer-form .fields .wrapper > div {
+    width: 100%;
+}
+.installer-form .fields .wrapper .gap {
+    width: 35px;
+}
+.installer-form .steps {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: calc(100% - 35px);
+    align-self: center;
+    margin: 0 auto;
+}
+.installer-form .steps::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #f2f4f7;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+}
+.installer-form .steps .step {
+    width: 25px;
+    height: 25px;
+    background-color: #f2f4f7;
+    border: 3px solid #f2f4f7;
+    border-radius: 50px;
+    
+    z-index: 1;
+}
+.installer-form .steps .step.current {
+    background-color: #8cc6f2;
+}
+.installer-form .steps .step.complete {
+    background-color: #6ECBA4;
+}
+.installer-form .rating {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.installer-form .rating input[type="radio"]:checked,
+.installer-form .rating input[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.installer-form .rating input[type="radio"]:checked + label,
+.installer-form .rating input[type="radio"]:not(:checked) + label
+{
+    display: flex;
+    position: relative;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+    width: 31px;
+    height: 31px;
+    cursor: pointer;
+    color: #8e939b;
+    z-index: 10;
+}
+.installer-form .rating input[type="radio"]:checked + label:before,
+.installer-form .rating input[type="radio"]:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #dfe0e0;
+    border-radius: 100%;
+    background: #fff;
+    z-index: -1;
+}
+.installer-form .rating input[type="radio"]:checked + label:after,
+.installer-form .rating input[type="radio"]:not(:checked) + label:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 31px;
+    height: 31px;
+    border-radius: 100%;
+    background: #c9704c;
+    z-index: -1;
+}
+.installer-form .rating input[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+}
+.installer-form .rating input[type="radio"]:checked + label {
+    color: #fff;
+}
+.installer-form .rating input[type="radio"]:checked + label:after {
+    opacity: 1;
+}
+.installer-form .rating-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #8e939b;
+    padding: 15px 0 25px;      
+}
+.installer-form .group {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+.installer-form .group label {
+    display: flex;
+    font-weight: 500;
+    height: 25px;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.installer-form .group input[type="radio"],
+.installer-form .group input[type="checkbox"] {
+    appearance: none;
+    display: inline-flex;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    background-clip: content-box;
+    border: 1px solid #dfe0e0;
+    background-color: #eef1f1;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.installer-form .group input[type="radio"]:hover,
+.installer-form .group input[type="checkbox"]:hover {
+    border: 1px solid #d2d3d3;
+}
+.installer-form .group input[type="radio"]:checked,
+.installer-form .group input[type="checkbox"]:checked {
+    border: 1px solid #d2d3d3;
+    background-color: #2996ed;
+}
+.installer-form .group input[type="checkbox"] {
+    border-radius: 0;
+}
+.installer-form .step-content {
+    display: none;
+}
+.installer-form .step-content.current {
+    display: block;
+}
+.installer-form .result {
+    padding: 25px;
+}
+.installer-form .result h3 {
+    color: #6a737f;
+}
+.installer-form .result p {
+    font-weight: 500;
+}
