@@ -44,8 +44,7 @@ RUN docker-php-ext-install \
     mbstring \
     exif \
     pdo_mysql \
-    zip \
-    oniguruma
+    zip 
 
 # 5. composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
