@@ -2,15 +2,9 @@ FROM php:7.4-apache
 COPY . /var/www/html
 RUN docker-php-ext-install pdo_mysql
 
+COPY . /var/www/html
+
 RUN apt-get update
-
-# 6. User
-
-ARG uid
-RUN useradd -G www-data,root -u  -d /home/devuser devuser
-RUN mkdir -p /home/devuser/.composer && \
-    chown -R devuser:devuser /home/devuser && \
-    chown -R devuser /home/devuser/.composer/
 
 # 1. development packages
 RUN apt-get install -y \
@@ -27,7 +21,6 @@ RUN apt-get install -y \
     libmcrypt-dev \
     libreadline-dev \
     libfreetype6-dev \
-    neofetch \
     g++
 
 # 2. apache configs + document root
@@ -41,7 +34,8 @@ RUN a2enmod rewrite headers
 # 4. start with base php config, then add extensions
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
-RUN docker-php-ext-configure gd && docker-php-ext-install gd
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install gd
 
 RUN docker-php-ext-install \
     bz2 \
@@ -50,10 +44,21 @@ RUN docker-php-ext-install \
     bcmath \
     opcache \
     calendar \
+    mbstring \
     exif \
-    pdo_mysql 
+    pdo_mysql \
+    zip
 
 # 5. composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# 6. we need a user with the same UID/GID with host user
+# so when we execute CLI commands, all the host file's ownership remains intact
+# otherwise command from inside container will create root-owned files and directories
+ARG uid
+RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
+RUN mkdir -p /home/devuser/.composer && \
+    chown -R devuser:devuser /home/devuser && \
+    chown -R devuser /home/devuser/.composer/
 
 CMD ["apache2ctl", "-D", "FOREGROUND"]
