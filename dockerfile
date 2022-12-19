@@ -19,6 +19,7 @@ RUN apt-get install -y \
     libmcrypt-dev \
     libreadline-dev \
     libfreetype6-dev \
+    oniguruma \
     g++
 
 # 2. apache configs + document root
@@ -44,7 +45,8 @@ RUN docker-php-ext-install \
     mbstring \
     exif \
     pdo_mysql \
-    zip
+    zip \
+    oniguruma
 
 # 5. composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
