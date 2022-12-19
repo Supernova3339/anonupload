@@ -1,1 +1,645 @@
+/*Start CSS.*/
+body
+{
+background-color: black;
+transition: background-color .2s;
+}
 
+/*Footer design.*/
+footer
+{
+width: 100%;
+position: fixed;
+bottom: 0;
+left: 0;
+background-color: white;
+height: 50px;
+font-family: 'Nunito', sans-serif;
+}
+
+/*All input fields.*/
+input
+{
+background-color: none;
+}
+input[type="file"]
+{
+display: none;
+margin: 0 auto;
+text-align: center;
+}
+input[type="text"]
+{
+border: none;
+background-color: none;
+}
+label[for="link_checkbox"] 
+{
+padding: .5rem 2rem;
+outline: none;
+cursor: pointer;
+text-align: center;
+font-family: 'Nunito', sans-serif;
+background-color: none;
+}
+input[name="access_login"]
+{
+width: 270px;
+box-sizing: border-box;
+border: none;
+border-radius: 25px;
+background-color: white;
+background-repeat: no-repeat;
+padding: 12px 12px 12px 12px;
+-webkit-transition: width 0.4s ease-in-out;
+transition: width 0.4s ease-in-out;
+outline: none;
+box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+input[name="access_password"]
+{
+width: 270px;
+box-sizing: border-box;
+border: none;
+border-radius: 25px;
+background-color: white;
+background-repeat: no-repeat;
+padding: 12px 12px 12px 12px;
+-webkit-transition: width 0.4s ease-in-out;
+transition: width 0.4s ease-in-out;
+outline: none;
+box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+input[type="textbox"]
+{
+width: 200px;
+font-family: 'Nunito', sans-serif;
+font-size: 14px;
+box-sizing: border-box;
+border: none;
+border-radius: 25px;
+background-color: white;
+background-position: 10px 10px; 
+background-repeat: no-repeat;
+padding: 9px 9px 9px 9px;
+-webkit-transition: width 0.4s ease-in-out;
+transition: width 0.4s ease-in-out;
+outline: none;
+box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+margin-top: 5px;
+margin-left: 10px;
+padding-left: 15px;
+}
+input[type="submit"]
+{
+border: none;
+cursor: pointer;
+font-size: 17px;
+background: none;
+outline: none;
+}
+
+/*Div id classes.*/
+#link_checkbox 
+{
+display: none;
+background-color: none;
+}
+#link 
+{
+color: #2f80ed;
+width: 430px;
+outline: none;
+font-size: 15px;
+font-family: 'Nunito', sans-serif;
+margin: 0 auto;
+margin-top: 0px;
+display: none;
+text-align: center;
+border: none;
+}
+#link_checkbox:checked ~ #link 
+{
+display: block;
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-weight: bold;
+border: none;
+background-color: rgba(0,0,0,0.0);
+margin-bottom: 10px;
+}
+#upload
+{
+display: none;
+}
+#bottomlink
+{
+margin-top: 10px;
+margin-left: 10px;
+font-family: 'Nunito', sans-serif;
+}
+#bottomlink a
+{
+text-decoration: none;
+font-size: 14px;
+float: right;
+margin-right: 15px;
+margin-top: 4px;
+font-weight: bold;
+}
+
+/*Div classes and span classes.*/
+.boxmain
+{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.boxone
+{
+margin: 0 auto;
+width: 420px;
+height: auto;
+}
+.boxone p
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 15px;
+color: white;
+font-weight: 300;
+}
+.boxtwo
+{
+margin: 0 auto;
+width: 420px;
+height: auto;
+}
+.boxtwo p
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+color: white;
+}
+.boxthree
+{
+text-align: center;
+}
+.boxthree_B
+{
+text-align: center;
+}
+.boxfour
+{
+margin: 0 auto;
+width: 410px;
+height: auto;
+}
+.boxfour p
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+color: white;
+}
+.boxhome
+{
+text-align: right;   
+margin-right: 13px; 
+}
+.boxfive 
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+color: #2f80ed;
+margin: 0 auto;
+width: 450px;
+height: auto;
+}
+.boxhref
+{
+text-align: center;
+word-spacing: 10px;
+}
+.boxhref a
+{
+text-decoration: none;
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+color: #2f80ed;
+word-spacing: 5px;
+}
+.boxfileupload
+{
+text-align: center;
+}
+.buttonone
+{
+background-color: white;
+color: black;
+font-weight: bold;
+padding: 15px 145px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 13px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+border-radius: 25px;
+margin-bottom: 6px;
+outline: none;
+border: none;
+}
+.buttonone:hover
+{
+background-color: white;
+color: black;
+font-weight: bold;
+}
+.buttontwo
+{
+background-color: white;
+border-style: solid;
+border-width: 0.5px;
+color: black;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 13px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+border-radius: 25px;
+margin-top: 6px;
+margin-bottom: 6px;
+}
+.buttontwo:hover
+{
+background-color: orange;
+color: white;
+}
+.buttonindex
+{
+text-decoration: none;
+font-size: 17px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+margin-right: 10px;
+}
+.buttonsearch
+{
+text-decoration: none;
+font-size: 17px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+margin-right: 10px;
+}
+.download
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+}
+.download .download_link
+{
+width: 225px;
+overflow:hidden;
+display:inline-block;
+text-overflow: ellipsis;
+white-space: nowrap;
+text-align: center;
+font-family: 'Nunito', sans-serif;
+text-decoration: none;
+font-weight: bold;
+color: #2f80ed;
+}
+.download .download_link:hover 
+{
+opacity: 1;
+}
+.upload
+{
+background-color: white;
+border-style: solid;
+border-width: 0.5px;
+color: white;
+padding: 15px 105px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 13px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+border-radius: 25px;
+margin-top: 6px;
+}
+.upload:hover
+{
+background-color: white;
+color: #333;
+border-style: solid;
+border-width: 0.5px;
+border-radius: 25px;
+}
+.linkgui
+{
+font-size: 15px;
+font-family: 'Nunito', sans-serif;
+color: rgb(255, 214, 121);
+margin-bottom: 5px;
+}
+.packaging
+{
+text-align: center;
+}
+.textbox
+{
+font-size: 15px;
+font-family: 'Nunito', sans-serif;
+text-align: center;
+color: rgb(255, 214, 121);
+}
+.textbox p
+{
+font-size: 15px;
+font-family: 'Nunito', sans-serif;
+text-align: center;
+color: rgb(255, 214, 121);
+}
+.custom_file_upload
+{
+background-color: #2f80ed;
+border-width: 0.5px;
+color: white;
+font-weight: bold;
+padding: 15px 125px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 13px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+border-radius: 25px;
+margin-top: 6px;
+}
+.progressbox
+{
+margin: 0 auto;
+width: 450px;
+height: auto;
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+font-weight: bold;
+color: #2f80ed;
+}
+.fontone
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 19px;
+font-weight: 700;
+color: white;
+}
+.dark-theme 
+{
+background-color: #333;
+}
+.dark-theme .switch 
+{
+background-color: rgba(255, 255, 255, .1);
+}
+.dark-theme .btn-toggle 
+{
+transform: translateX(28px);
+}
+.switch 
+{
+display: flex;
+border-radius: 50px;
+width: 3rem;
+padding: .3rem;
+background-color: #2f80ed;
+transition: background-color .2s;
+cursor: pointer;
+}
+.btn-toggle 
+{
+width: 20px;
+height: 20px;
+border-radius: 20px;
+background-color: white;
+transition: transform .1s;
+}
+body.dark 
+{
+background-color: black;
+}
+body.light 
+{
+background-color: #f2efe4;
+}
+.dark p 
+{
+color: white;
+}
+.dark .searchrecords p
+{
+color: rgb(255, 214, 121);
+}
+.dark .textbox p
+{
+color: rgb(255, 214, 121);
+}
+.light p 
+{
+color: black;
+}
+.light .searchrecords p
+{
+color: black;
+}
+.light .textbox p
+{
+color: rgb(255, 214, 121);
+}
+.light .boxjump p
+{
+color: black;
+}
+.modes
+{
+text-align: right;
+float: right;
+}
+.theme2
+{
+display: inline-block;
+text-decoration: none;
+font-size: 17px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+margin-right: 10px;
+}
+.theme3
+{
+display: inline-block;
+text-decoration: none;
+font-size: 17px;
+cursor: pointer;
+font-family: 'Nunito', sans-serif;
+margin-right: 10px;
+}
+.searchbody
+{
+text-align: left;
+margin-left: 10px;
+}
+.searchrecords
+{
+font-family: 'Nunito', sans-serif;
+font-size: 14px;
+color: rgb(255, 214, 121);
+}
+.searchrecords a
+{
+text-decoration: none;
+color: #2f80ed;
+}
+.copy
+{
+word-spacing: 2px;
+color: white;
+font-family: 'Nunito', sans-serif;
+font-size: 14px;
+color: #2f80ed;
+float:left;
+margin-left: 15px;
+margin-top: 7px;
+font-weight: bold;
+}	
+.errmessage
+{
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+}
+.login
+{
+font-family: 'Nunito', sans-serif;
+font-size: 14px;
+color: #2f80ed;
+}
+.pass
+{
+font-family: 'Nunito', sans-serif;
+font-size: 14px;
+color: #2f80ed;
+}
+.buttonlogin
+{
+width: 270px;
+box-sizing: border-box;
+border: none;
+border-radius: 25px;
+background-color: #2f80ed;;
+color: white;
+font-family: 'Nunito', sans-serif;
+background-repeat: no-repeat;
+padding: 6px 6px 6px 6px;
+-webkit-transition: width 0.4s ease-in-out;
+transition: width 0.4s ease-in-out;
+outline: none;
+box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+margin: auto;
+text-align: center;
+}
+.boxinvite p
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+color: rgb(255, 214, 121);
+}
+.boxjump 
+{
+margin: 0 auto;
+width: 410px;
+height: auto;
+}
+.boxjump p
+{
+text-align: center;
+font-family: 'Nunito', sans-serif;
+font-size: 13px;
+color: white;
+margin-top: 28px;
+}
+
+/*Responsive web design.*/
+@media only screen and (max-width: 750px) 
+{
+.boxfour
+{
+margin: 0 auto;
+width: 340px;
+height: auto
+}
+}
+@media only screen and (max-width: 750px) 
+{
+.boxjump
+{
+margin: 0 auto;
+width: 340px;
+height: auto
+}
+}
+@media only screen and (max-width: 750px) 
+{
+.boxjump p
+{
+margin: 0 auto;
+width: 340px;
+height: auto
+}
+}
+@media only screen and (max-width: 750px) 
+{
+.boxtwo
+{
+margin: 0 auto;
+width: 340px;
+height: auto
+}
+}
+@media only screen and (max-width: 750px) 
+{
+.boxone
+{
+margin: 0 auto;
+width: 360px;
+height: auto;
+}
+}
+@media only screen and (max-width: 750px) 
+{
+.boxfive
+{
+margin: 0 auto;
+width: 370px;
+height: auto;
+}
+}
+@media only screen and (max-width: 750px) 
+{
+.boxhref
+{
+margin: 0 auto;
+width: 370px;
+height: auto;
+}
+}
+
+/*End CSS.*/
