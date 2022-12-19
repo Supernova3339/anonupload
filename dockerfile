@@ -41,7 +41,6 @@ RUN docker-php-ext-install \
     bcmath \
     opcache \
     calendar \
-    mbstring \
     exif \
     pdo_mysql \
     zip 
