@@ -7,9 +7,10 @@ RUN apt-get update
 # 6. User
 
 ARG uid
+RUN useradd -G www-data,root -u  -d /home/devuser devuser
 RUN mkdir -p /home/devuser/.composer && \
-    chown -R root:root /home/root && \
-    chown -R root /home/root/.composer/
+    chown -R devuser:devuser /home/devuser && \
+    chown -R devuser /home/devuser/.composer/
 
 # 1. development packages
 RUN apt-get install -y \
@@ -26,6 +27,7 @@ RUN apt-get install -y \
     libmcrypt-dev \
     libreadline-dev \
     libfreetype6-dev \
+    neofetch \
     g++
 
 # 2. apache configs + document root
