@@ -7,10 +7,10 @@ RUN apt-get update
 # 6. User
 
 ARG uid
-RUN useradd -G www-data,root -u 911 -d /home/devuser devuser
+RUN useradd -G www-data,root -u 911 -d /home/root root
 RUN mkdir -p /home/devuser/.composer && \
-    chown -R devuser:devuser /home/devuser && \
-    chown -R devuser /home/devuser/.composer/
+    chown -R root:root /home/root && \
+    chown -R root /home/root/.composer/
 
 # 1. development packages
 RUN apt-get install -y \
