@@ -44,8 +44,7 @@ RUN docker-php-ext-install \
     opcache \
     calendar \
     exif \
-    pdo_mysql \
-    zip
+    pdo_mysql 
 
 # 5. composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
