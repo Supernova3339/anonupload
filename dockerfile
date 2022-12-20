@@ -21,6 +21,7 @@ RUN apt-get install -y \
     libmcrypt-dev \
     libreadline-dev \
     libfreetype6-dev \
+    oniguruma-dev \
     g++
 
 # 2. apache configs + document root
