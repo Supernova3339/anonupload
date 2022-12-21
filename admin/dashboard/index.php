@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 ?>
 <?php
   $directory = "../.$file_url_destination./files/"; // dir location
-if (glob($directory . "*.*") != false)
+if (glob($directory . "*.*" . "index.php") != false)
 {
  $filecount = count(glob($directory. "*.*"));
  
