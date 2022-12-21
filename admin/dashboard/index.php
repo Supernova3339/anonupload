@@ -105,6 +105,12 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
         </div>
         <i class="fas fa-info"></i>
     </div>
+  
+  <br>
+  if(!plausibleembed == ''){
+  <?=plausibleembed?> }else{
+  
+  }
 
 </div>
 
