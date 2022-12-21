@@ -123,7 +123,7 @@ $(document).ready(function(){
     </script>
 	<?php if(!plausible == '') ?>
 		// do nothing
-	<?php elseif; ?>
+	<?php else; ?>
 	<script defer data-domain="<?=plausible?>" src="<?=plausible?>/js/script.js"></script>
 	<?php endif; ?>
 	
