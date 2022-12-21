@@ -113,7 +113,8 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
   <span class="closebtn">&times;</span>  
   <strong>Warning!</strong>&nbsp;Plausible analytics have not been configured.
 </div>
-  }';
+  ';
+}
   
 if(plausibledatadomain&&plausibledomain&&plausibleembedtoken){
   echo '
