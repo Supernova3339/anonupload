@@ -14,6 +14,7 @@ $applogo = getenv('APP_LOGO_IMAGE') ?? 'assets/images/logo.png';
 $plausibledomain = getenv('PLAUSIBLE_DOMAIN');
 $plausibledatadomain = getenv('PLAUSIBLE_DATA_DOMAIN');
 $plausibleembed = getenv('PLAUSIBLE_EMBED');
+$plausibleembedtoken = getenv('PLAUSIBLE_EMBED_TOKEN');
 
 // Uploader settings
 $filelist = getenv('APP_FILELIST') ?? 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt';
@@ -41,5 +42,6 @@ define('min_size', $minsize);
 define('plausibledomain', $plausibledomain);
 define('plausibledatadomain', $plausibledatadomain);
 define('plausible_embed', $plausibleembed);
+define('plausibleembedtoken', $plausibleembedtoken);
 
 ?>
