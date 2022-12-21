@@ -108,7 +108,10 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 </div>
   <br>
 <?php if(!plausibledatadomain&&plausibledomain&&plausibleembedtoken == ''){ ?>
-
+<div class="alert warning">
+  <span class="closebtn">&times;</span>  
+  <strong>Warning!</strong>&nbsp;Plausible analytics have not been configured.
+</div>
 <?php }else{ ?>
 <iframe plausible-embed src="<?=plausibledomain?>/share/<?=plausibledatadomain?>?auth=<?=plausibleembedtoken?>&embed=true&theme=light&background=%23EBECED" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1600px;"></iframe>
 <script async src="<?=plausibledomain?>js/embed.host.js"></script>
