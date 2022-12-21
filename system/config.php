@@ -31,4 +31,8 @@ define('file_destination', $filedestination);
 define('file_url_destination', $baseurl);
 define('max_size', $maxsize);
 define('min_size', $minsize);
+
+// Plausible Analytics
+define('plausible', $plausible);
+
 ?>
