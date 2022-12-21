@@ -8,7 +8,7 @@ $password = getenv('ADMIN_PASSWORD') or 'password';
 // App
 $appname = getenv('APP_NAME') or 'AnonUpload - Secure File Sharing';
 $appdesc = getenv('APP_DESC') or 'Secure and anonymous file sharing';
-$applogo = getenv('APP_LOGO_IMAGE') or 'assets/images/logo.png';
+$applogo = getenv('APP_LOGO_IMAGE') or = 'assets/images/logo.png';
 
 // Plausible analytics
 $plausible = getenv('PLAUSIBLE_DOMAIN');
