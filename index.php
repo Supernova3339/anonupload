@@ -121,7 +121,7 @@ $(document).ready(function(){
   });
 });
     </script>
-	<?php if(!plausible='') ?>
+	<?php if(!plausible == '') ?>
 		// do nothing
 	<?php elseif; ?>
 	<script defer data-domain="<?=plausible?>" src="<?=plausible?>/js/script.js"></script>
