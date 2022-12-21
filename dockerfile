@@ -27,4 +27,4 @@ RUN set -eux; apt-get update; \
 # copy files
 COPY --chown=33:33 . /var/www/html
 
-VOLUME /var/www/html/data
+VOLUME /var/www/html/files
