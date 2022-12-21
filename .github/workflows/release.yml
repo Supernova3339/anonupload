@@ -1,0 +1,68 @@
+name: Release to Github Packages. # https://ghcr.io
+
+on: # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on
+  push:
+    tags: # This builds for all branches with semantically versioned tags (v0.12.3).
+      - v* # https://semver.org will fail, if there are any other tags
+
+  #release: # Builds only releases. Includes draft and pre-releases.
+    #types: [created]
+
+  #pull_request: # Run 'tests' for any PRs. Default is to not run for first-time contributors: see /settings/actions
+
+env:
+  TAG_LATEST: false # Encourage users to use a major version (foobar:1) instead of :latest.
+  # By semantic versioning standards, major changes are changes 'backwards incompatible'. Major upgrades are often rare and prehaps, need attention from the user.
+
+jobs:
+  # Push image to GitHub Packages.
+  push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag ${{ github.event.repository.name }} --label "runnumber=${GITHUB_RUN_ID}"
+
+      - name: Authenticate with ghcr.io
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push image
+        run: |
+          # Destiination, trsnform to lowercase
+          IMAGE_ID=$(echo ghcr.io/${{ github.repository }} | tr '[A-Z]' '[a-z]')
+          function tag_push() {
+          docker tag ${{ github.event.repository.name }} $IMAGE_ID:$1
+          docker push $IMAGE_ID:$1
+          }
+          # Strip git ref prefix from version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # trigger is (hopefully semantically) tagged
+          if [[ "${{ github.ref }}" == "refs/tags/"* ]]; then
+            # Strip +buildinfo
+            VERSION=$(cut -d+ -f1 <<< $VERSION)
+            # Strip "v" prefix from tag name (v1.2.3 to 1.2.3)
+            VERSION=$(sed -e 's/^v//' <<< $VERSION)
+            
+            if [[ -z $(cut -sd- -f1 <<< $VERSION) ]]; then # Not a prerelease (not v0.1.2-rc4)
+              
+              [[ ${TAG_LATEST} == "true" ]] && tag_push latest
+              
+              tag_push $VERSION # push patch (:1.2.3)
+            
+              # push minor version (:1.2)
+              VERSION=$(cut -d. -f -2 <<< $VERSION)
+              tag_push $VERSION
+            
+              # major version (:1)
+              VERSION=$(cut -d. -f -1 <<< $VERSION)
+            fi
+          fi
+          
+          # push normally (and possibly major)
+          tag_push $VERSION
+          # Can't push multiple tags at once: https://github.com/docker/cli/issues/267
