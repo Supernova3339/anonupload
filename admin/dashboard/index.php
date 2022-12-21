@@ -107,13 +107,13 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
     </div>
 </div>
   <br>
-if(!plausibledatadomain&&plausibledomain == ''){
+<?php if(!plausibledatadomain&&plausibledomain == ''){ ?>
 
-}else{
+<?php }else{ ?>
 <iframe plausible-embed src="<?=plausibledomain?>/share/<?=plausibledatadomain?>?auth=<?=plausibleembedtoken?>&embed=true&theme=light&background=%23EBECED" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1600px;"></iframe>
 <div style="font-size: 14px; padding-bottom: 14px;">Stats powered by <a target="_blank" style="color: #4F46E5; text-decoration: underline;" href="https://plausible.io">Plausible Analytics</a></div>
 <script async src="<?=plausibledomain?>js/embed.host.js"></script>
-}
+<?php } ?>
 
  
 
