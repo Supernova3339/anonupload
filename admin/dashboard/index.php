@@ -108,12 +108,12 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 </div>
   <br>
 <?php if(!plausibledatadomain&&plausibledomain&&plausibleembedtoken){
-  echo '
+  <<<EOT
 <div class="alert warning">
   <span class="closebtn">&times;</span>  
   <strong>Warning!</strong>&nbsp;Plausible analytics have not been configured.
 </div>
-  ';
+  EOT;
 }
   
 if(plausibledatadomain&&plausibledomain&&plausibleembedtoken){
