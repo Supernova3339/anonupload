@@ -25,6 +25,7 @@ define('email', $email);
 define('password', $password);
 define('app_name', $appname);
 define('app_desc', $appdesc);
+define('app_logoimage', $applogo);
 define('FILELIST', $filelist);
 define('size_verification', $sizeverification);
 define('file_destination', $filedestination);
