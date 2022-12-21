@@ -108,7 +108,7 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 </div>
   <br>
 <?php
-  echo plausibleembed;
+  echo plausible_embed;
 
  
 
