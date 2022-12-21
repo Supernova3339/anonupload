@@ -29,6 +29,8 @@ return $bytes . ' B';
 }
 }
 
+// test
+
 $maxsize = max_size;
 $core = new Core();
 ?>
