@@ -120,7 +120,6 @@ if(plausibledatadomain&plausibledomain&plausibleembedtoken){
 <iframe plausible-embed src="' . plausibledomain . '/share/' . plausibledatadomain . '?auth= ' . plausibleembedtoken . '&embed=true&theme=light&background=%23EBECED" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1600px;"></iframe>
 <script async src="' . plausibledomain . 'js/embed.host.js"></script> ';
 }
-?>
  
 
-<?=template_admin_footer()?>
+template_admin_footer();
