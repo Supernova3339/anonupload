@@ -13,6 +13,7 @@ $applogo = getenv('APP_LOGO_IMAGE') ?? 'assets/images/logo.png';
 // Plausible analytics
 $plausibledomain = getenv('PLAUSIBLE_DOMAIN');
 $plausibledatadomain = getenv('PLAUSIBLE_DATA_DOMAIN');
+$plausibleembed = getenv('PLAUSIBLE_EMBED');
 
 // Uploader settings
 $filelist = getenv('APP_FILELIST') ?? 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt';
@@ -24,8 +25,11 @@ $minsize = getenv('APP_MIN_SIZE') ?? '0';
 
 define('email', $email);
 define('password', $password);
+
+/* SEO */
 define('app_name', $appname);
 define('app_desc', $appdesc);
+/* Upload Settings */
 define('app_logoimage', $applogo);
 define('FILELIST', $filelist);
 define('size_verification', $sizeverification);
@@ -33,9 +37,9 @@ define('file_destination', $filedestination);
 define('file_url_destination', $baseurl);
 define('max_size', $maxsize);
 define('min_size', $minsize);
-
-// Plausible Analytics
+/* Analytics */
 define('plausibledomain', $plausibledomain);
 define('plausibledatadomain', $plausibledatadomain);
+define('plausible_embed', $plausibleembed);
 
 ?>
