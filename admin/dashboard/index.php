@@ -13,7 +13,7 @@ error_reporting(E_ALL);
   $directory = "../.$file_url_destination./files/"; // dir location
 if (glob($directory . "*.*") != false)
 {
- $filecount = count(glob($directory. "*.*"));
+ $filecount = count(glob($directory. "*.*" && $file != "index.php"));
  
 }
 // file size of upload dir
