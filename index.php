@@ -126,7 +126,7 @@ $(document).ready(function(){
 });
     </script>
 	<?php if(!plausibledatadomain&&plausibledomain == ''){ ?>
-		// do nothing
+		
 	<?php }else{ ?>
 	<script defer data-domain="<?=plausibledatadomain?>" src="<?=plausibledomain?>/js/script.js"></script>
 	<?php }  ?>
