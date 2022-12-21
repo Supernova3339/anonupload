@@ -1,12 +1,30 @@
 <?php
-define('email','owen8064@gmail.com');
-define('password','12345678');
-define('app_name','AnonUpload - Secure File Sharing');
-define('app_desc','Secure and anonymous file sharing');
-define('FILELIST','jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt');
-define('size_verification',true);
-define('file_destination','files');
-define('file_url_destination','https://anonuptest-web.hxqcwb.easypanel.host');
-define('max_size','10000000000');
-define('min_size','0');
+
+// enviroment variables
+// administration
+$email = getenv('ADMIN_EMAIL') or 'admin@easypanel.io';
+$password = getenv('ADMIN_PASSWORD') or 'password';
+
+// App
+$appname = getenv('APP_NAME') or 'AnonUpload - Secure File Sharing';
+$appdesc = getenv('APP_DESC') or 'Secure and anonymous file sharing';
+
+// Uploader settings
+$filelist = getenv('APP_FILELIST') or 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt';
+$sizeverification = getenv('APP_SIZE_VERIFICATION') or true;
+$filedestination = getenv('APP_FILE_DESTINATION') or 'files';
+$baseurl = getenv('APP_BASE_URL') or $_SERVER['HTTP_HOST'];
+$maxsize = getenv('APP_MAX_SIZE') or (int)(ini_get('upload_max_filesize'));
+$minsize = getenv('APP_MIN_SIZE') or '0';
+
+define('email', $email);
+define('password', $password);
+define('app_name', $appname);
+define('app_desc', $appdesc);
+define('FILELIST', $filelist);
+define('size_verification', $sizeverification);
+define('file_destination', $filedestination);
+define('file_url_destination', $baseurl);
+define('max_size', $maxsize);
+define('min_size', $minsize);
 ?>
