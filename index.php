@@ -48,7 +48,7 @@ $core = new Core();
 </head>
 <body>
 	<div class="wrapper">
-		<img src="assets/images/logo.png">
+		<img src="<?=app_logoimage?>">
 <?php 
 if(isset($_POST['submit'])){
 	if($core->FileTypeVerification($_FILES["fileToUpload"])){
