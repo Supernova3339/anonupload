@@ -11,7 +11,8 @@ $appdesc = getenv('APP_DESC') ?? 'Secure and anonymous file sharing';
 $applogo = getenv('APP_LOGO_IMAGE') ?? 'assets/images/logo.png';
 
 // Plausible analytics
-$plausible = getenv('PLAUSIBLE_DOMAIN');
+$plausibledomain = getenv('PLAUSIBLE_DOMAIN');
+$plausibledatadomain = getenv('PLAUSIBLE_DATA_DOMAIN');
 
 // Uploader settings
 $filelist = getenv('APP_FILELIST') ?? 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt';
@@ -34,6 +35,7 @@ define('max_size', $maxsize);
 define('min_size', $minsize);
 
 // Plausible Analytics
-define('plausible', $plausible);
+define('plausibledomain', $plausibledomain);
+define('plausibledatadomain', $plausibledatadomain);
 
 ?>
