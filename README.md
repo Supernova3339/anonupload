@@ -24,4 +24,4 @@ docker pull ghcr.io/supernova3339/anonupload
 - Dockerized
 
 #### Documentation
-[Environment Variables](blob/main/env.md) - [SHAREX-SOON'](#)
+[Environment Variables](main.md) - [SHAREX-SOON'](#)
