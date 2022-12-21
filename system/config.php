@@ -2,24 +2,24 @@
 
 // enviroment variables
 // administration
-$email = getenv('ADMIN_EMAIL') or 'admin@easypanel.io';
-$password = getenv('ADMIN_PASSWORD') or 'password';
+$email = getenv('ADMIN_EMAIL') ?? 'admin@easypanel.io';
+$password = getenv('ADMIN_PASSWORD') ?? 'password';
 
 // App
-$appname = getenv('APP_NAME') or 'AnonUpload - Secure File Sharing';
-$appdesc = getenv('APP_DESC') or 'Secure and anonymous file sharing';
-$applogo = getenv('APP_LOGO_IMAGE') else 'assets/images/logo.png';
+$appname = getenv('APP_NAME') ?? 'AnonUpload - Secure File Sharing';
+$appdesc = getenv('APP_DESC') ?? 'Secure and anonymous file sharing';
+$applogo = getenv('APP_LOGO_IMAGE') ?? 'assets/images/logo.png';
 
 // Plausible analytics
 $plausible = getenv('PLAUSIBLE_DOMAIN');
 
 // Uploader settings
-$filelist = getenv('APP_FILELIST') or 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt';
-$sizeverification = getenv('APP_SIZE_VERIFICATION') or true;
-$filedestination = getenv('APP_FILE_DESTINATION') or 'files';
-$baseurl = getenv('APP_BASE_URL') or $_SERVER['HTTP_HOST'];
-$maxsize = getenv('APP_MAX_SIZE') or (int)(ini_get('upload_max_filesize'));
-$minsize = getenv('APP_MIN_SIZE') or '0';
+$filelist = getenv('APP_FILELIST') ?? 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt';
+$sizeverification = getenv('APP_SIZE_VERIFICATION') ?? true;
+$filedestination = getenv('APP_FILE_DESTINATION') ?? 'files';
+$baseurl = getenv('APP_BASE_URL') ?? $_SERVER['HTTP_HOST'];
+$maxsize = getenv('APP_MAX_SIZE') ?? (int)(ini_get('upload_max_filesize'));
+$minsize = getenv('APP_MIN_SIZE') ?? '0';
 
 define('email', $email);
 define('password', $password);
