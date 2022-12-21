@@ -121,11 +121,11 @@ $(document).ready(function(){
   });
 });
     </script>
-	<?php if(!plausible == '') ?>
+	<?php if(!plausible == ''){ ?>
 		// do nothing
-	<?php else; ?>
+	<?php }else{ ?>
 	<script defer data-domain="<?=plausible?>" src="<?=plausible?>/js/script.js"></script>
-	<?php endif; ?>
+	<?php } endif; ?>
 	
 </body>
 </html>
