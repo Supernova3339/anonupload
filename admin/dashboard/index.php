@@ -124,4 +124,3 @@ if(plausibledatadomain&&plausibledomain&&plausibleembedtoken){
  
 
 template_admin_footer();
-}
