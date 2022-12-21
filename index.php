@@ -99,17 +99,6 @@ if(isset($_POST['submit'])){
         	<ul>
         	    <li>Maximum filesize: <?php echo sizeFormat($maxsize); ?></li>
         	</ul>
-        	    <?php
-                    // check if logged in
-                    if (!isset($_SESSION["user"])) {
-                    }else{
-                    echo '
-                    <br>
-                    <ul>
-                         <li><a href="admin/dashboard">Admin</a></li>
-                    </ul>';
-                    }
-                    ?>
         </form>
     </div>
 
