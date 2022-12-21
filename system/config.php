@@ -8,6 +8,10 @@ $password = getenv('ADMIN_PASSWORD') or 'password';
 // App
 $appname = getenv('APP_NAME') or 'AnonUpload - Secure File Sharing';
 $appdesc = getenv('APP_DESC') or 'Secure and anonymous file sharing';
+$applogo = getenv('APP_LOGO_IMAGE') or 'assets/images/logo.png';
+
+// Plausible analytics
+$plausible = getenv('PLAUSIBLE_DOMAIN');
 
 // Uploader settings
 $filelist = getenv('APP_FILELIST') or 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt';
