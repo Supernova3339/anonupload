@@ -125,7 +125,7 @@ $(document).ready(function(){
 		// do nothing
 	<?php }else{ ?>
 	<script defer data-domain="<?=plausible?>" src="<?=plausible?>/js/script.js"></script>
-	<?php } endif; ?>
+	<?php }  ?>
 	
 </body>
 </html>
