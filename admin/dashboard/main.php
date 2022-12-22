@@ -153,7 +153,7 @@ function checkForUpdates(Request $request, Response $response): Response
     {
         $jsonResponse = [
             'status' => 'OK',
-            'message' => 'Already Latest Version'),
+            'message' => 'Already Latest Version',
             'upgrade' => false,
         ];
 
