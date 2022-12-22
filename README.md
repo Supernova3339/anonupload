@@ -13,7 +13,7 @@ AnonFiles is a simple, databaseless PHP file uploader. It's built with privacy i
 #### Installation
 
 ```
-docker pull ghcr.io/supernova3339/anonupload
+docker pull ghcr.io/supernova3339/anonfiles
 ```
 
 #### Features
