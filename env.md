@@ -32,4 +32,4 @@
 | APP_BASE_URL | Application base URL | YES | https://xxx.xxx/
 | APP_MAX_SIZE | Application max upload size in BYTES | YES | 10000000000 [10GB]
 | APP_MIN_SIZE | Application minimum upload size in BYTES | YES | 0 [0KB]
-| APP_DOWNLOAD_TIME | Time to wait until file downloads | NO | 30 (in seconds)
+| APP_DOWNLOAD_TIME | Time to wait until file downloads | YES | 30 (in seconds)
