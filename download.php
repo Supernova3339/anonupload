@@ -60,9 +60,10 @@ if(isset($_POST['submit'])){
         <!--</form>-->
     </div>
 </body>
+	<?php echo'
   <script>
   const downloadBtn = document.querySelector(".download-btn");
-const fileLink = "<?=$fileURL?>";
+const fileLink = "' . $fileURL .'";
 const initTimer = () => {
     if(downloadBtn.classList.contains("disable-timer")) {
         return location.href = fileLink;
@@ -86,5 +87,5 @@ const initTimer = () => {
     }, 1000);
 }
 downloadBtn.addEventListener("click", initTimer);
-  </script>
+  </script>'; ?>
 </html>
