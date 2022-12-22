@@ -149,7 +149,7 @@ function time_elapsed_string($datetime, $full = false) {
 
 const GITHUB_SOURCE_API = 'https://api.github.com/repos/Supernova3339/anonfiles/releases';
 
-public function checkForUpdates(Request $request, Response $response): Response
+function checkForUpdates(Request $request, Response $response): Response
     {
         $jsonResponse = [
             'status' => 'OK',
@@ -185,7 +185,7 @@ public function checkForUpdates(Request $request, Response $response): Response
         return json($response, $jsonResponse);
     }
 
-    protected function getApiJson()
+    function getApiJson()
     {
         $opts = [
             'http' => [
