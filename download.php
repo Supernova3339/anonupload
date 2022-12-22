@@ -36,7 +36,7 @@ $baseurl = file_url_destination;
 
 // Check if file exists
 if(!file_exists($fileURL){
-header("Location: $baseurl");
+ http_response_code(404);
 }
 
 $core = new Core();
