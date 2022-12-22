@@ -100,5 +100,9 @@ $(document).ready(function(){
   });
 });
     </script>
+	
+	<?php if(plausible == !null){ ?>
+	<script defer data-domain="<?=plausibledomain?>" src="<?=plausibledatadomain?>/js/script.js"></script>
+	<?php }  ?>
 </body>
 </html>
