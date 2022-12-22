@@ -4,7 +4,7 @@
 </p>
 
 --- 
-
+<!-- images should be 116.6666667 by 26.6666667 for BRAND logos -->
 #### About
 
 AnonFiles is a simple, databaseless PHP file uploader. It's built with privacy in mind, by not showing the direct filename used. 
