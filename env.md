@@ -12,6 +12,7 @@
 | APP_NAME | Sets the app title | YES  | AnonUpload - Secure File Sharing
 | APP_DESC | Sets the app description  | YES | Secure and anonymous file sharing
 | APP_LOGO_IMAGE | Sets the app logo image | YES | assets/images/logo.png
+| APP_CONTACT_EMAIL | Sets the report files email | YES | admin@admin.com
 
 ##### Plausible
 ---
@@ -31,3 +32,4 @@
 | APP_BASE_URL | Application base URL | YES | https://xxx.xxx/
 | APP_MAX_SIZE | Application max upload size in BYTES | YES | 10000000000 [10GB]
 | APP_MIN_SIZE | Application minimum upload size in BYTES | YES | 0 [0KB]
+| APP_DOWNLOAD_TIME | Time to wait until file downloads | NO | 30 (in seconds)
