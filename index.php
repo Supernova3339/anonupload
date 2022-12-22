@@ -47,9 +47,10 @@ if(isset($_POST['submit'])){
 		if($core->FileSizeVerification($_FILES["fileToUpload"])){
 			$newfilename = $core->FileNameConvertor($_FILES["fileToUpload"]);
 			if($core->UploadFile($_FILES["fileToUpload"], $newfilename)){
+				 $destination = base64_encode(file_url_destination.'/'.file_destination.'/'.$newfilename);
 				?>
 				<div class="notification success">
-					Success ! Your file are available here: <a href="<?= file_url_destination.'/'.file_destination.'/'.$newfilename; ?>"><?= file_url_destination.'/'.file_destination.'/'.$newfilename; ?></a>
+					Success ! Your file are available here: <a href="download.php?file=<?=$destination?>"><a href="download.php?file=<?=$destination?></a>
 				</div>
 				<?php
 			}else{
