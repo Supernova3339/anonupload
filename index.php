@@ -95,7 +95,7 @@ if(isset($_POST['submit'])){
 		  <p>Drag a file here or click to upload</p>
 		  <button name="submit" type="submit">Upload</button>
 		  <ul>
-        		<li>Supported files: <?= FILELIST; ?></li> 
+        		<li>Supported files: <?= FILELIST; ?></li><br> 
         	    <li>Maximum filesize: <?php echo sizeFormat($maxsize); ?></li>
         	</ul>
         </form>
