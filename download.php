@@ -32,10 +32,11 @@ $maxsize = max_size;
 $file = $_GET['file'];
 $fileURL = base64_decode($file);
 $filesize = filesize($fileURL);
+$baseurl = file_url_destination;
 
 // Check if file exists
 if(!file_exists($fileURL){
-header("Location: " . file_url_destination);
+header('Location: ' . $baseurl);
 }
 
 $core = new Core();
