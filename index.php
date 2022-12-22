@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
 				 $destination = base64_encode(file_url_destination.'/'.file_destination.'/'.$newfilename);
 				?>
 				<div class="notification success">
-					Success ! Your file are available here: <a href="download.php?file=<?=$destination?>"><a href="download.php?file=<?=$destination?></a>
+					Success ! Your file are available here: <a href="download.php?file=<?php echo $destination; ?>"><a href="download.php?file=<?php echo $destination; ?></a>
 				</div>
 				<?php
 			}else{
