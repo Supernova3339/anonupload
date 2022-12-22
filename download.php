@@ -33,6 +33,10 @@ $file = $_GET['file'];
 $fileURL = base64_decode($file);
 $filesize = filesize($fileURL);
 
+// Check if file exists
+if(!file_exists($fileURL){
+header("Location: " . file_url_destination);
+}
 
 $core = new Core();
 ?>
