@@ -38,6 +38,9 @@ $baseurl = file_url_destination;
 if(!file_exists($fileURL)){
  http_response_code(404);
 }
+if($file == ''){
+http_response_code(404);
+}
 
 $core = new Core();
 ?>
