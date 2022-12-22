@@ -25,6 +25,9 @@ $baseurl = getenv('APP_BASE_URL') ?? $_SERVER['HTTP_HOST'];
 $maxsize = getenv('APP_MAX_SIZE') ?? (int)(ini_get('upload_max_filesize'));
 $minsize = getenv('APP_MIN_SIZE') ?? '0';
 
+if($waitfor = !null){ $waitfor = getenv('APP_DOWNLOAD_TIME'); }
+if($waitfor = null){ $waitfor = "30"; }
+
 define('email', $email);
 define('password', $password);
 
@@ -41,6 +44,7 @@ define('file_url_destination', $baseurl);
 define('max_size', $maxsize);
 define('min_size', $minsize);
 define('app_contact_email', $appcontact);
+define('waitfor', $waitfor);
 
 /* Analytics */
 define('plausibledomain', $plausibledomain);
