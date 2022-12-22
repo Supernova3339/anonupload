@@ -68,7 +68,7 @@ if(isset($_POST['submit'])){
 const fileLink = "' . $fileURL .'";
 const initTimer = () => {
     if(downloadBtn.classList.contains("disable-timer")) {
-        return location.href = fileLink;
+        return downloadFile(filelink);
     }
     let timer = downloadBtn.dataset.timer;
     downloadBtn.classList.add("timer");
@@ -79,7 +79,7 @@ const initTimer = () => {
             return downloadBtn.innerHTML = `Your download will begin in <b>${timer}</b> seconds`;
         }
         clearInterval(initCounter);
-        window.open(fileLink);
+        downloadFile(filelink);
         downloadBtn.innerText = "Your file is downloading...";
         setTimeout(() => {
             downloadBtn.classList.replace("timer", "disable-timer");
@@ -88,5 +88,23 @@ const initTimer = () => {
     }, 1000);
 }
 downloadBtn.addEventListener("click", initTimer);
+
+public static downloadFile(url: string): void {
+     const xmlHttp = new XMLHttpRequest();
+     xmlHttp.onreadystatechange = () => {
+       if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+         const blobUrl = window.URL.createObjectURL(xmlHttp.response);
+         const e = document.createElement('a');
+         e.href = blobUrl;
+         e.download = blobUrl.substr(blobUrl.lastIndexOf('/') + 1);
+         document.body.appendChild(e);
+         e.click();
+         document.body.removeChild(e);
+       }
+     };
+     xmlHttp.responseType = 'blob';
+     xmlHttp.open('GET', url, true);
+     xmlHttp.send(null);
+   }
   </script>'; ?>
 </html>
