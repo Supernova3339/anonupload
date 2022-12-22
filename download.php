@@ -96,14 +96,14 @@ public static downloadFile(url: string): void {
          const blobUrl = window.URL.createObjectURL(xmlHttp.response);
          const e = document.createElement("a");
          e.href = blobUrl;
-         e.download = blobUrl.substr(blobUrl.lastIndexOf('/') + 1);
+         e.download = blobUrl.substr(blobUrl.lastIndexOf("/") + 1);
          document.body.appendChild(e);
          e.click();
          document.body.removeChild(e);
        }
      };
-     xmlHttp.responseType = 'blob';
-     xmlHttp.open('GET', url, true);
+     xmlHttp.responseType = "blob";
+     xmlHttp.open("GET", url, true);
      xmlHttp.send(null);
    }
   </script>'; ?>
