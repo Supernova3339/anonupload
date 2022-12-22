@@ -38,7 +38,7 @@ $core = new Core();
         
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?= app_name; ?> - <?= app_desc; ?></title>
+	<title><?php if(app_name&&app_desc == ''){ ?>AnonUpload - Secure file sharing <?php } if(app_name&&app_desc){ ?><?= app_name; ?> - <?= app_desc; ?><?php } ?></title>
 	    <!-- for discord -->
         <meta property="og:type" content="website">
         <meta property="og:title" content="<?= app_name; ?>" />
