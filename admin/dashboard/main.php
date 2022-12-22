@@ -168,7 +168,7 @@ function checkForUpdates(Request $request, Response $response): Response
                     version_compare($release->tag_name, PLATFORM_VERSION, '>') &&
                     version_compare($release->tag_name, 'prerelease', '<')
                 ) {
-                    $jsonResponse['message'] = 'New version available!', [$release->tag_name]);
+                    $jsonResponse['message'] = 'New version available!' [$release->tag_name]);
                     $jsonResponse['upgrade'] = true;
                     break;
                 }
