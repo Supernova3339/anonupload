@@ -39,7 +39,7 @@ $core = new Core();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		<?php if(app_name&&app_desc == ''){ ?>
+		<?php if(app_nameapp_desc == ''){ ?>
 	AnonUpload - Secure and anonymous file sharing <?php } if(app_name&&app_desc){ echo app_name . ' - ' . app_desc; } ?></title>
 	    <!-- for discord -->
         <meta property="og:type" content="website">
@@ -116,9 +116,7 @@ $(document).ready(function(){
   });
 });
     </script>
-	<?php if(!plausibledatadomain&&plausibledomain == ''){ ?>
-		
-	<?php }else{ ?>
+	<?php if(plausibledatadomain&&plausibledomain == !null){ ?>
 	<script defer data-domain="<?=plausibledatadomain?>" src="<?=plausibledomain?>/js/script.js"></script>
 	<?php }  ?>
 	
