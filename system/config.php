@@ -30,6 +30,7 @@ define('password', $password);
 /* SEO */
 define('app_name', $appname);
 define('app_desc', $appdesc);
+
 /* Upload Settings */
 define('app_logoimage', $applogo);
 define('FILELIST', $filelist);
@@ -38,10 +39,14 @@ define('file_destination', $filedestination);
 define('file_url_destination', $baseurl);
 define('max_size', $maxsize);
 define('min_size', $minsize);
+
 /* Analytics */
 define('plausibledomain', $plausibledomain);
 define('plausibledatadomain', $plausibledatadomain);
 define('plausible_embed', $plausibleembed);
 define('plausibleembedtoken', $plausibleembedtoken);
+/* version */
+define('version', 'v1.0.0');
+
 
 ?>
