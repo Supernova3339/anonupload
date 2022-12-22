@@ -48,7 +48,7 @@ $core = new Core();
 </head>
 <body>
 	<div class="wrapper">
-		<?php if(!app_logoimage == ''){ ?>
+		<?php if(app_logoimage == ''){ ?>
 		<img src="assets/images/logo.png">
 		<?php } if(app_logoimage){ ?>
 		<img src="<?=app_logoimage?>">
