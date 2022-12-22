@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
 ?>
         <!--<form>-->
 	    <div class="download-area">	
-		  <button class="download-btn" data-timer="<?=waitfor?>" >Download</button>
+		  <button class="download-btn" data-timer="<?=waitfor?>">Download(<?=sizeFormat($fileURL)?>)</button>
 		  <ul>
         <li>Report files: <a href="mailto:<?=app_contact_email?>"><?=app_contact_email?></a></li> 
         	</ul>
