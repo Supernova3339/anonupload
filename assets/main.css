@@ -94,7 +94,6 @@ form button:active{
   margin-left: -250px;
   width: 500px;
   height: 200px;
-  border: 2px dashed #353535;
 }
 .download-area p{
   position: absolute;
