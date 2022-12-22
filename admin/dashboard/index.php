@@ -100,7 +100,7 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
         <div class="data">
             <h3>Version</h3>
             <p>
-            1.0
+            <?=version?>
             </p>
         </div>
         <i class="fas fa-info"></i>
