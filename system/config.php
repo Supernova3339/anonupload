@@ -46,7 +46,7 @@ define('plausibledatadomain', $plausibledatadomain);
 define('plausible_embed', $plausibleembed);
 define('plausibleembedtoken', $plausibleembedtoken);
 /* version */
-define('version', 'v1.0.0');
+define('version', 'v1.0.0'); // DO NOT FORGET TO CHANGE THIS
 
 
 ?>
