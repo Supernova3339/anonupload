@@ -119,6 +119,13 @@ form button:active{
     transition: all .2s ease;
     outline: none;
 }
+.download-btn.timer{
+  color: #000;
+  background: none;
+  transition: none;
+  font-size: 1.6rem;
+  pointer-events: none;
+}
 .download-btn:hover{
   background: #383838;
 }
