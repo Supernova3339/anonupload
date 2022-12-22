@@ -1,6 +1,8 @@
 <?php
 // Check if the user is logged-in
 include_once '../protect.php';
+// Read comfiguration file
+include_once '../../system/config.php';
 // Add/remove roles from the list
 $roles_list = ['Admin', 'Member'];
 // Logout User on '?logout' -->
@@ -23,8 +25,8 @@ function template_admin_header($title, $selected = 'dashboard', $selected_child 
         <a href="files.php"' . ($selected == 'files' ? ' class="selected"' : '') . '><i class="fas fa-file-alt"></i>Files</a>
         <a href="settings.php"' . ($selected == 'settings' ? ' class="selected"' : '') . '><i class="fas fa-tools"></i>Settings</a>
         <div class="footer">
-        <a href="https://support.superdev.one" target="_blank">AnonFiles</a>
-        Version 1.0.0
+        <a href="https://github.com/supernova3339/anonfiles" target="_blank">AnonFiles</a>
+        Version ' . version  . '
         </div>
     ';
     // Indenting the below code may cause an error
