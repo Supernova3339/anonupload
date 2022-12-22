@@ -102,7 +102,7 @@ $(document).ready(function(){
     </script>
 	
 	<?php if(plausibledomain&&plausibledatadomain == !null){ ?>
-	<script defer data-domain="<?=plausibledomain?>" src="<?=plausibledatadomain?>/js/script.js"></script>
+	<script defer data-domain="<?=plausibledatadomain?>" src="<?=plausibledomain?>/js/script.js"></script>
 	<?php }  ?>
 </body>
 </html>
