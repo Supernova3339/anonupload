@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
 }
 
 ?>
-        <form action="upload.php" method="POST">
+        <form method="post" action="" enctype="multipart/form-data">
   <input type="file" name="fileToUpload">
   <p>Drag your file here or click in this area.</p>
   <button type="submit">Upload</button>
