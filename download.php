@@ -51,13 +51,13 @@ if(isset($_POST['submit'])){
   
 	}
 ?>
-        <form>
-		  <p>File selected:  <?=$selectedFile?></p>
+        <!--<form>-->
+		  <p>File to be downloaded:  <?=$file?></p>
 		  <button class="download-btn" data-timer="10" >Download</button>
 		  <ul>
         <li>Report files: <a href="mailto:<?=app_contact_email?>"><?=app_contact_email?></a></li> 
         	</ul>
-        </form>
+        <!--</form>-->
     </div>
 </body>
   <script>
