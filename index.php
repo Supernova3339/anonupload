@@ -50,11 +50,14 @@ if(isset($_POST['submit'])){
 
 ?>
         <form method="post" action="" enctype="multipart/form-data">
-  <input type="file" name="fileToUpload">
-  <p>Drag your file here or click in this area.</p>
-  <button type="submit">Upload</button>
-</form>
-	</div>
+		  <input type="file" name="fileToUpload">
+		  <p>Drag your files here or click in this area.</p>
+		  <button name="submit" type="submit">Upload</button>
+		  <ul>
+        		<li>Supported files: <?= FILELIST; ?></li> 
+        	</ul>
+        </form>
+    </div>
 
 
 
