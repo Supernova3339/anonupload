@@ -31,6 +31,7 @@ $maxsize = max_size;
 // Get uploaded file
 $file = $_GET['file'];
 $fileURL = base64_decode($file);
+$filesize = filesize($fileURL);
 
 
 $core = new Core();
@@ -53,7 +54,7 @@ if(isset($_POST['submit'])){
 ?>
         <!--<form>-->
 	    <div class="download-area">	
-		  <button class="download-btn" data-timer="<?=waitfor?>">Download(<?=sizeFormat($fileURL)?>)</button>
+		  <button class="download-btn" data-timer="<?=waitfor?>">Download(<?=sizeFormat($filesize)?>)</button>
 		  <ul>
         <li>Report files: <a href="mailto:<?=app_contact_email?>"><?=app_contact_email?></a></li> 
         	</ul>
