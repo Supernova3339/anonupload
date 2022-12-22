@@ -94,7 +94,7 @@ public static downloadFile(url: string): void {
      xmlHttp.onreadystatechange = () => {
        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
          const blobUrl = window.URL.createObjectURL(xmlHttp.response);
-         const e = document.createElement('a');
+         const e = document.createElement("a");
          e.href = blobUrl;
          e.download = blobUrl.substr(blobUrl.lastIndexOf('/') + 1);
          document.body.appendChild(e);
