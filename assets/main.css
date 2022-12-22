@@ -23,15 +23,15 @@ ul{
 ul li{
 	padding-right: .2vh;
 }
-form{
+orm{
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -250px;
   margin-top: -100px;
+  margin-left: -250px;
   width: 500px;
   height: 200px;
-  border: 2px dashed #353535;
+  border: 4px dashed #fff;
 }
 form p{
   width: 100%;
@@ -42,6 +42,7 @@ form p{
   font-family: Arial;
 }
 form input{
+  position: absolute;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -50,21 +51,22 @@ form input{
   opacity: 0;
 }
 form button{
-    margin: 0;
-    color: #fff;
-    background: #2d2d2d;
-    border: none;
-    width: 508px;
-    height: 35px;
-    margin-top: 15px;
-    margin-left: -4px;
-    border-radius: 4px;
-    border-bottom: 4px solid #252525;
-    transition: all .2s ease;
-    outline: none;
+  margin: 0;
+  color: #fff;
+  background: #16a085;
+  border: none;
+  width: 508px;
+  height: 35px;
+  margin-top: -20px;
+  margin-left: -4px;
+  border-radius: 4px;
+  border-bottom: 4px solid #117A60;
+  transition: all .2s ease;
+  outline: none;
 }
 form button:hover{
-  background: #383838;
+  background: #149174;
+	color: #0C5645;
 }
 form button:active{
   border:0;
