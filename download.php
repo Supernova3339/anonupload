@@ -35,7 +35,7 @@ $filesize = filesize($fileURL);
 $baseurl = file_url_destination;
 
 // Check if file exists
-if(!file_exists($fileURL){
+if(!file_exists($fileURL)){
  http_response_code(404);
 }
 
