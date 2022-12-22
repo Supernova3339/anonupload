@@ -1,5 +1,6 @@
 <?php 
 require_once(__DIR__ . '/system/core.class.php');
+require_once(__DIR__ . '/system/config.php');
 // size convertor
 function sizeFormat($bytes){ 
 $kb = 1024;
