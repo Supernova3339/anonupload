@@ -78,7 +78,7 @@ if(isset($_POST['submit'])){
 ?>
         <form method="post" action="" enctype="multipart/form-data">
 		  <input type="file" name="fileToUpload">
-		  <p>Drag your files here or click in this area - <?=sizeConvertor($maxsize)?> Max</p>
+		  <p>Drag your files here or click in this area - <?=sizeFormat($maxsize)?> Max</p>
 		  <button name="submit" type="submit">Upload</button>
 		  <ul>
         		<li>Supported files: <?= FILELIST; ?></li> 
