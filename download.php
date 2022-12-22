@@ -69,7 +69,6 @@ if(isset($_POST['submit'])){
 	    </div>
         <!--</form>-->
     </div>
-</body>
 	<?php echo'
   <script>
   const downloadBtn = document.querySelector(".download-btn");
@@ -98,4 +97,8 @@ const initTimer = () => {
 downloadBtn.addEventListener("click", initTimer);
   </script>
   </script>'; ?>
+		<?php if(plausibledomain&&plausibledatadomain == !null){ ?>
+	<script defer data-domain="<?=plausibledomain?>" src="<?=plausibledatadomain?>/js/script.js"></script>
+	<?php }  ?>
+</body>
 </html>
