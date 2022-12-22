@@ -50,7 +50,7 @@ $core = new Core();
 	<div class="wrapper">
 		<?php if(!app_logoimage == ''){ ?>
 		<img src="assets/images/logo.png">
-		<?php }else{ ?>
+		<?php } if(app_logoimage){ ?>
 		<img src="<?=app_logoimage?>">
 		<?php } ?>
 <?php 
