@@ -9,6 +9,7 @@ $password = getenv('ADMIN_PASSWORD') ?? 'password';
 $appname = getenv('APP_NAME') ?? 'AnonUpload - Secure File Sharing';
 $appdesc = getenv('APP_DESC') ?? 'Secure and anonymous file sharing';
 $applogo = getenv('APP_LOGO_IMAGE') ?? 'assets/images/logo.png';
+$appcontact = getenv('APP_CONTACT_EMAIL');
 
 // Plausible analytics
 $plausibledomain = getenv('PLAUSIBLE_DOMAIN');
@@ -39,6 +40,7 @@ define('file_destination', $filedestination);
 define('file_url_destination', $baseurl);
 define('max_size', $maxsize);
 define('min_size', $minsize);
+define('app_contact_email', $appcontact);
 
 /* Analytics */
 define('plausibledomain', $plausibledomain);
