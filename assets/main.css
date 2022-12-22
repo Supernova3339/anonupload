@@ -120,9 +120,9 @@ form button:active{
     outline: none;
 }
 .download-btn.timer{
-  color: #000;
-  background: none;
-  transition: none;
+  color: #fff;
+  background: #2d2d2d;
+  transition: all .2s ease;
   font-size: 1.6rem;
   pointer-events: none;
 }
