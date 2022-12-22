@@ -79,12 +79,11 @@ const initTimer = () => {
             return downloadBtn.innerHTML = `Your download will begin in <b>${timer}</b> seconds`;
         }
         clearInterval(initCounter);
-        location.href = fileLink;
+        window.open(fileLink);
         downloadBtn.innerText = "Your file is downloading...";
         setTimeout(() => {
             downloadBtn.classList.replace("timer", "disable-timer");
-            downloadBtn.innerHTML = `<span class="icon material-symbols-rounded">vertical_align_bottom</span>
-                                     <span class="text">Download Again</span>`;
+            downloadBtn.innerHTML = `<span class="text">Download Again</span>`;
         }, 3000);
     }, 1000);
 }
