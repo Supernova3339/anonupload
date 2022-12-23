@@ -117,9 +117,10 @@ $version_filename = 'latest.txt?token=GHSAT0AAAAAAB4S7HM4SZGF7VWPABQO3KRSY5FDV4Q
             <?=version?>
           </p>
               <?php 
-              if($server_version>version){
+              if($server_version > version){
               echo '<p>update available</p>';
               }
+		echo $server_version;
               ?>
             </p>
         </div>
