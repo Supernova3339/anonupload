@@ -146,5 +146,12 @@ function time_elapsed_string($datetime, $full = false) {
     if (!$full) $string = array_slice($string, 0, 1);
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
-
+function str_to_version_info($string)
+	{
+		$latest_version = FALSE;
+		if (preg_match('/^\s*?(\d+\.\d+\.\d+)/i', $string, $match)) {
+			$latest_version = $match[1];
+		}
+		return $latest_version;
+	}
 ?>
