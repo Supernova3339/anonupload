@@ -70,7 +70,7 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 $PATCH_URL = 'https://raw.githubusercontent.com/Supernova3339/anonfiles/main/';
 $version_filename = 'latest.txt?token=GHSAT0AAAAAAB4S7HM4SZGF7VWPABQO3KRSY5FDV4Q'; # REMOVE TOKEN
 // Get version
-		$ch = curl_init($this->PATCH_URL.$this->version_filename);
+		$ch = curl_init(PATCH_URL . $this);
 
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -78,7 +78,7 @@ $version_filename = 'latest.txt?token=GHSAT0AAAAAAB4S7HM4SZGF7VWPABQO3KRSY5FDV4Q
 		$str = curl_exec($ch);
 		curl_close($ch);
 
-		$server_version = $this->str_to_version_info($str);
+		$server_version = str_to_version_info($str);
 
 ?>
 <?=template_admin_header('Dashboard', 'dashboard')?>
