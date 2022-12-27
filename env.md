@@ -11,7 +11,6 @@
 | ------ | ------ | ------| ------ |
 | APP_NAME | Sets the app title | YES  | AnonUpload - Secure File Sharing
 | APP_DESC | Sets the app description  | YES | Secure and anonymous file sharing
-| APP_LOGO_IMAGE | Sets the app logo image | YES | assets/images/logo.png
 | APP_CONTACT_EMAIL | Sets the report files email | YES | admin@admin.com
 
 ##### Plausible
