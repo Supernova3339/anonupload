@@ -11,7 +11,7 @@
 #### About
 
 AnonFiles is a simple, databaseless PHP file uploader. It's built with privacy in mind, by not showing the direct filename used. 
-    AnonFiles works anywhere! It doesnt matter if your using lightspeed, nginx, or even apache.
+    AnonFiles works anywhere! It doesn't matter if you're using lightspeed, nginx, or even apache.
 
 #### Installation
 Host with [![Easypanel](https://raw.githubusercontent.com/Supernova3339/Supernova3339/main/easypanel.png)](https://easypanel.io/docs/templates/anonfiles)
