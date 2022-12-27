@@ -20,4 +20,4 @@ services:
             - APP_MIN_SIZE=0
             - APP_CONTACT_EMAIL=changeme@dontforget.okay
             - APP_DOWNLOAD_TIME=30
-        image: ghcr.io/supernova3339/anonfiles
+        image: ghcr.io/supernova3339/anonfiles:1
