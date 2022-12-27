@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+    supernova3339:
+        container_name: anonfiles
+        ports:
+            - '80:80'
+        volumes:
+            - '/etc/anonfiles/files:/var/www/html/files'
+        environment:
+            - ADMIN_EMAIL=admin@admin.com
+            - ADMIN_PASSWORD=password
+            - 'APP_FILELIST=jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg,wav,avi,rar,7z,txt'
+            # - 'PLAUSIBLE_DOMAIN=https://xxx.xxx'
+            # - 'PLAUSIBLE_DATA_DOMAIN=project.xxx.xxx'
+            # - 'PLAUSIBLE_EMBED_TOKEN=xxxxxxx' - when you generate EMBED code, you'll see ?auth=-xxxxxxxxxxxxxxx - this is what you should copy - don't copy anything after it ( feel free to delete this if you want to use plausible with anonfiles )
+            - APP_SIZE_VERIFICATION=true
+            - APP_FILE_DESTINATION=files
+            - 'APP_BASE_URL=https://xxx.xxx/'
+            - APP_MAX_SIZE=10000000000
+            - APP_MIN_SIZE=0
+            - APP_CONTACT_EMAIL=changeme@dontforget.okay
+            - APP_DOWNLOAD_TIME=30
+        image: ghcr.io/supernova3339/anonfiles
