@@ -1,68 +1,53 @@
-name: Release to Github Packages. # https://ghcr.io
+name: Docker Image CI
 
-on: # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on
-  push:
-    tags: # This builds for all branches with semantically versioned tags (v0.12.3).
-      - v* # https://semver.org will fail, if there are any other tags
-
-  #release: # Builds only releases. Includes draft and pre-releases.
-    #types: [created]
-
-  #pull_request: # Run 'tests' for any PRs. Default is to not run for first-time contributors: see /settings/actions
-
-env:
-  TAG_LATEST: false # Encourage users to use a major version (foobar:1) instead of :latest.
-  # By semantic versioning standards, major changes are changes 'backwards incompatible'. Major upgrades are often rare and prehaps, need attention from the user.
+on:
+  workflow_dispatch:
+  workflow_call:
 
 jobs:
-  # Push image to GitHub Packages.
-  push:
+  build:
+
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
 
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+            fetch-depth: 0
 
-      - name: Build image
-        run: docker build . --file Dockerfile --tag ${{ github.event.repository.name }} --label "runnumber=${GITHUB_RUN_ID}"
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
 
-      - name: Authenticate with ghcr.io
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+        
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+      
+    - name: Log in to the Container registry
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push image
-        run: |
-          # Destiination, trsnform to lowercase
-          IMAGE_ID=$(echo ghcr.io/${{ github.repository }} | tr '[A-Z]' '[a-z]')
-          function tag_push() {
-          docker tag ${{ github.event.repository.name }} $IMAGE_ID:$1
-          docker push $IMAGE_ID:$1
-          }
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          # trigger is (hopefully semantically) tagged
-          if [[ "${{ github.ref }}" == "refs/tags/"* ]]; then
-            # Strip +buildinfo
-            VERSION=$(cut -d+ -f1 <<< $VERSION)
-            # Strip "v" prefix from tag name (v1.2.3 to 1.2.3)
-            VERSION=$(sed -e 's/^v//' <<< $VERSION)
-            
-            if [[ -z $(cut -sd- -f1 <<< $VERSION) ]]; then # Not a prerelease (not v0.1.2-rc4)
-              
-              [[ ${TAG_LATEST} == "true" ]] && tag_push latest
-              
-              tag_push $VERSION # push patch (:1.2.3)
-            
-              # push minor version (:1.2)
-              VERSION=$(cut -d. -f -2 <<< $VERSION)
-              tag_push $VERSION
-            
-              # major version (:1)
-              VERSION=$(cut -d. -f -1 <<< $VERSION)
-            fi
-          fi
-          
-          # push normally (and possibly major)
-          tag_push $VERSION
-          # Can't push multiple tags at once: https://github.com/docker/cli/issues/267
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        
+    - name: Build image and push to Docker Hub and GitHub Container Registry
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        tags: |
+          supernova3339/anonupload:latest
+          supernova3339/anonupload:${{ steps.previoustag.outputs.tag }}
+          ghcr.io/supernova3339/anonupload:latest
+          ghcr.io/supernova3339/anonupload:${{ steps.previoustag.outputs.tag }}
+        # build on feature branches, push only on main branch
+        push: ${{ github.ref == 'refs/heads/master' }}
+        platforms: linux/amd64,linux/arm64,linux/arm/v7
