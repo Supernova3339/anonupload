@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/github/license/supernova3339/anonfiles?style=for-the-badge" alt="github">
 <img src="https://img.shields.io/github/sponsors/supernova3339?style=for-the-badge" alt="github sponsors">
 <img src="https://img.shields.io/github/issues-pr-raw/supernova3339/anonupload?style=for-the-badge" alt="github pull requests">
-<a><img src="https://img.shields.io/gitter/room/supernova3339/anonupload?style=for-the-badge" alt="chat on gitter"></a>
+<a href="https://gitter.im/supernova3339/anonupload"><img src="https://img.shields.io/gitter/room/supernova3339/anonupload?style=for-the-badge" alt="chat on gitter"></a>
   
 </p>
 
