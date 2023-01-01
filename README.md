@@ -1,6 +1,12 @@
 <p align="center">
   <img width="auto" height="200" src="/favicon.png"><br><br>
-  Secure and anonymous file sharing without a database
+  Secure and anonymous file sharing without a database<br><br>
+  <img src="https://img.shields.io/github/v/release/supernova3339/anonupload?style=for-the-badge" alt="latest version">
+<img src="https://img.shields.io/github/stars/supernova3339/anonupload?style=for-the-badge" alt="repo stars">
+<img src="https://img.shields.io/github/license/supernova3339/anonfiles?style=for-the-badge" alt="github">
+<img src="https://img.shields.io/github/sponsors/supernova3339?style=for-the-badge" alt="github sponsors">
+<img src="https://img.shields.io/github/issues-pr-raw/supernova3339/anonupload?style=for-the-badge" alt="github pull requests">
+<img src="https://img.shields.io/gitter/room/supernova3339/anonupload?style=for-the-badge" alt="chat on gitter">
 </p>
 
 --- 
