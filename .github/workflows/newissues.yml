@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.3.0
         with:
-          project: AnonUpload Roadmap
+          project: Anonupload Roadmap
           column: Todo
           repo-token: ${{ secrets.GITHUB_TOKEN }}
