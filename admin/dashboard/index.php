@@ -67,8 +67,7 @@ return $bytes . ' B';
 $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 
 // Get version
-		$verurl = github_api_url;
-		$releases = json_decode(file_get_contents($verurl));
+		$releases = json_decode(file_get_contents($github_api_url));
 		
 		$server_version = $releases['tag_name'];
 
