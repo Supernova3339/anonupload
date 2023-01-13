@@ -52,6 +52,7 @@ define('plausible_embed', $plausibleembed);
 define('plausibleembedtoken', $plausibleembedtoken);
 /* version */
 define('version', 'v1.0.0'); // DO NOT FORGET TO CHANGE THIS
+$github_api_url = 'https://api.github.com/repos/Supernova3339/anonupload/releases/latest'; // this is how tag gets pulled for latest version
 
 
 ?>
