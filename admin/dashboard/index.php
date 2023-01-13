@@ -81,7 +81,7 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 		$result = curl_exec($ch);
-		$server_version = $result['tag_name'];
+		$server_version = $result["tag_name"];
 		if (curl_errno($ch)) {
 		    echo 'Error:' . curl_error($ch);
 		}
