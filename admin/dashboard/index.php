@@ -67,18 +67,25 @@ return $bytes . ' B';
 $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 
 // Get version
-		$ch = curl_init($PATCH_URL . $github_api_url);
+		$ch = curl_init();
 
-		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_URL, $github_api_url');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 		curl_setopt($ch, CURLOPT_USERAGENT, 'AnonUpload');
 
-		$str = curl_exec($ch);
-		$latest_version = $str->tag_name;
-		echo $latest_version;
-		echo "full resp";
-		echo $str;
-		curl_close($ch);;
+
+		$headers = array();
+		$headers[] = 'Accept: application/vnd.github+json';
+		$headers[] = 'X-Github-Api-Version: 2022-11-28';
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+		$result = curl_exec($ch);
+		$server_version = $result['tag_name'];
+		if (curl_errno($ch)) {
+		    echo 'Error:' . curl_error($ch);
+		}
+		curl_close($ch);
 
 ?>
 <?=template_admin_header('Dashboard', 'dashboard')?>
