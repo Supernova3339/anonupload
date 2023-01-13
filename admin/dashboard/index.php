@@ -74,7 +74,7 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 		curl_setopt($ch, CURLOPT_USERAGENT, 'AnonUpload');
 
 		$str = curl_exec($ch);
-		$latest_version = $str['tag_name'];
+		$latest_version = $str->tag_name;
 		curl_close($ch);;
 
 ?>
