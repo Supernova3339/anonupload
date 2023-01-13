@@ -67,25 +67,9 @@ return $bytes . ' B';
 $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 
 // Get version
-		$ch = curl_init();
-
-		curl_setopt($ch, CURLOPT_URL, $github_api_url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-		curl_setopt($ch, CURLOPT_USERAGENT, 'AnonUpload');
-
-
-		$headers = array();
-		$headers[] = 'Accept: application/vnd.github+json';
-		$headers[] = 'X-Github-Api-Version: 2022-11-28';
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-		$result = curl_exec($ch);
-		$server_version = $result['tag_name'];
-		if (curl_errno($ch)) {
-		    echo 'Error:' . curl_error($ch);
-		}
-		curl_close($ch);
+		$releases = json_decode(file_get_contents("https://api.github.com/repos/supernova3339/anonupload/releases/latest"));
+		
+		$server_version = $releases['tag_name'];
 
 ?>
 <?=template_admin_header('Dashboard', 'dashboard')?>
