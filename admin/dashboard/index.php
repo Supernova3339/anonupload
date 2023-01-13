@@ -69,7 +69,7 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 // Get version
 		$ch = curl_init();
 
-		curl_setopt($ch, CURLOPT_URL, $github_api_url');
+		curl_setopt($ch, CURLOPT_URL, $github_api_url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 		curl_setopt($ch, CURLOPT_USERAGENT, 'AnonUpload');
