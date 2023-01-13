@@ -66,19 +66,16 @@ return $bytes . ' B';
 // get size of folders in a folder 
 $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 
-// Update checker
-$PATCH_URL = 'https://raw.githubusercontent.com/Supernova3339/anonfiles/main/';
-$version_filename = 'latest.txt?token=GHSAT0AAAAAAB4S7HM4SZGF7VWPABQO3KRSY5FDV4Q'; # REMOVE TOKEN
 // Get version
-		$ch = curl_init($PATCH_URL . $version_filename);
+		$ch = curl_init($PATCH_URL . $github_api_url);
 
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'AnonUpload');
 
 		$str = curl_exec($ch);
-		curl_close($ch);
-
-		$server_version = str_to_version_info($str);
+		$latest_version = $str['tag_name'];
+		curl_close($ch);;
 
 ?>
 <?=template_admin_header('Dashboard', 'dashboard')?>
