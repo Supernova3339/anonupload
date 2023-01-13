@@ -75,6 +75,7 @@ $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 
 		$str = curl_exec($ch);
 		$latest_version = $str->tag_name;
+		print("Latest version:" + $latest_version);
 		curl_close($ch);;
 
 ?>
