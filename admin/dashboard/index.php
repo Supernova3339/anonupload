@@ -67,7 +67,7 @@ return $bytes . ' B';
 $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 
 // Get version
-		$releases = json_decode(file_get_contents("https://api.github.com/repos/supernova3339/anonupload/releases/latest"));
+		$releases = json_decode(file_get_contents(github_api_url));
 		
 		$server_version = $releases['tag_name'];
 
