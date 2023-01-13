@@ -67,9 +67,7 @@ return $bytes . ' B';
 $plugin_count = count(glob('../../plugins/*', GLOB_ONLYDIR));
 
 // Get version
-		$releases = json_decode(file_get_contents("https://api.github.com/repos/Supernova3339/anonupload/releases/latest"));
-		
-		$server_version = $releases['tag_name'];
+// todo: make this work
 
 ?>
 <?=template_admin_header('Dashboard', 'dashboard')?>
