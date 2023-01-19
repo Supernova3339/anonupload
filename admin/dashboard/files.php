@@ -1,6 +1,6 @@
 <?php
 include 'main.php';
-$dir = '../../files/';
+$dir = "../../files/";
 /*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -34,85 +34,95 @@ if (isset($_GET['error_msg'])) {
     if ($_GET['error_msg'] == 3) {
         $error_msg = 'An Error Occured';
     }
-    if ($_GET['error_msg'] == 4) {
+        if ($_GET['error_msg'] == 4) {
         $error_msg = 'File path doesnt exist.';
     }
-    if ($_GET['error_msg'] == 5) {
+        if ($_GET['error_msg'] == 5) {
         $error_msg = 'File path not found.';
     }
 }
 
+
 // filelist
 
-function list_directory_files($dir)
-{
-    if (is_dir($dir)) {
-        if ($handle = opendir($dir)) {
-            while (($file = readdir($handle)) !== false) {
-                if ($file != '.' && $file != '..' && $file != 'Thumbs.db' && $file != 'index.php') {
-                    echo '<tr>';
-                    echo '<td>';
-                    echo $file;
-                    echo '</td>';
-                    echo '<td>';
-                    echo '<a class="link1" href="?path='.$dir.''.$file.'">Download</a>';
-                    echo '<a  class="link1" href="?delete&file='.$dir.''.$file.'">Delete</a>';
-                    echo '</td>';
-                    echo '</tr>';
-                }
-            }
-
-            closedir($handle);
-        }
-    }
+function list_directory_files($dir) {
+	
+	if (is_dir($dir)) {
+		if ($handle = opendir($dir)) {
+			
+			while (($file = readdir($handle)) !== false) {
+				if ($file != "." && $file != ".." && $file != "Thumbs.db" && $file != "index.php") { 
+					echo '<tr>';
+					echo '<td>';
+					echo $file;
+					echo '</td>';
+					echo '<td>';
+					echo '<a class="link1" href="?path='.$dir.''.$file.'">Download</a>';
+					echo '<a  class="link1" href="?delete&file='.$dir.''.$file.'">Delete</a>';
+					echo '</td>';
+					echo '</tr>';
+					
+				}
+			}
+			
+			closedir($handle);
+			
+		}
+	}
 }
 
 // download file
 
-if (isset($_GET['path'])) {
-    //Read the url
-    $url = $_GET['path'];
+if(isset($_GET['path']))
+{
+//Read the url
+$url = $_GET['path'];
 
-    //Clear the cache
-    clearstatcache();
+//Clear the cache
+clearstatcache();
 
-    //Check the file path exists or not
-    if (file_exists($url)) {
+//Check the file path exists or not
+if(file_exists($url)) {
 
 //Define header information
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="'.basename($url).'"');
-        header('Content-Length: '.filesize($url));
-        header('Pragma: public');
+header('Content-Description: File Transfer');
+header('Content-Type: application/octet-stream');
+header('Content-Disposition: attachment; filename="'.basename($url).'"');
+header('Content-Length: ' . filesize($url));
+header('Pragma: public');
 
-        //Clear system output buffer
-        flush();
+//Clear system output buffer
+flush();
 
-        //Read the size of the file
-        readfile($url, true);
+//Read the size of the file
+readfile($url,true);
 
-        //Terminate from the script
-        exit();
-    } else {
-        // do nothing
-    }
+//Terminate from the script
+die();
+}
+else{
+    // do nothing
+}
 }
 // do nothing
 
-if (isset($_GET['delete'], $_GET['file'])) {
-    $delfile = $_GET['file'];
-    /*
-    header("Location: $delfile");
-    */
-    if (unlink($delfile)) {
-        // file was successfully deleted
-        header('Refresh:0 url=files.php?success_msg=1');
-    } else {
-        // there was a problem deleting the file
-        header('Refresh:0 url=files.php?error_msg=1');
-    }
+
+if(isset($_GET['delete'], $_GET['file'])){
+
+$delfile = $_GET['file'];
+/*
+header("Location: $delfile");
+*/
+If (unlink($delfile)) {
+  // file was successfully deleted
+  header("Refresh:0 url=files.php?success_msg=1");
+} else {
+  // there was a problem deleting the file
+  header("Refresh:0 url=files.php?error_msg=1");
+  
 }
+}
+
 
 ?>
 
@@ -127,22 +137,22 @@ if (isset($_GET['delete'], $_GET['file'])) {
 </div>
 
 <!-- Display Success Alert -->
-<?php if (isset($success_msg)) { ?>
+<?php if (isset($success_msg)): ?>
 <div class="msg success">
     <i class="fas fa-check-circle"></i>
     <p><?=$success_msg?></p>
     <i class="fas fa-times"></i>
 </div>
-<?php } ?>
+<?php endif; ?>
 
 <!-- Display Error Message -->
-<?php if (isset($error_msg)) { ?>
+<?php if (isset($error_msg)): ?>
 <div class="msg error">
     <i class="fa fa-exclamation-triangle"></i>
     <p><?=$error_msg?></p>
     <i class="fas fa-times"></i>
 </div>
-<?php } ?>
+<?php endif; ?>
 
 <div class="content-block">
     <div class="table">   

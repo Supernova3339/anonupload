@@ -1,5 +1,4 @@
 <?php
-
 // Check if the user is logged-in
 include_once '../protect.php';
 // Read comfiguration file
@@ -7,32 +6,31 @@ include_once '../../system/config.php';
 // Add/remove roles from the list
 $roles_list = ['Admin', 'Member'];
 // Logout User on '?logout' -->
-if (isset($_GET['logout'])) {
+if(isset($_GET['logout']))
+{
     logout();
 }
 // Logout Function -->
-function logout()
-{
+function logout(){
     session_destroy();
-    header('Location: ../');
+	header("Location: ../");
     exit();
 }
 
 // Template admin header
-function template_admin_header($title, $selected = 'dashboard', $selected_child = '')
-{
+function template_admin_header($title, $selected = 'dashboard', $selected_child = '') {
     // Admin HTML links
     $admin_links = '
-        <a href="index.php"'.($selected == 'dashboard' ? ' class="selected"' : '').'><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-        <a href="files.php"'.($selected == 'files' ? ' class="selected"' : '').'><i class="fas fa-file-alt"></i>Files</a>
-        <a href="settings.php"'.($selected == 'settings' ? ' class="selected"' : '').'><i class="fas fa-tools"></i>Settings</a>
+        <a href="index.php"' . ($selected == 'dashboard' ? ' class="selected"' : '') . '><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+        <a href="files.php"' . ($selected == 'files' ? ' class="selected"' : '') . '><i class="fas fa-file-alt"></i>Files</a>
+        <a href="settings.php"' . ($selected == 'settings' ? ' class="selected"' : '') . '><i class="fas fa-tools"></i>Settings</a>
         <div class="footer">
         <a href="https://github.com/supernova3339/anonfiles" target="_blank">AnonFiles</a>
-        Version '.version.'
+        Version ' . version  . '
         </div>
     ';
     // Indenting the below code may cause an error
-    echo <<<EOT
+echo <<<EOT
 <!DOCTYPE html>
 <html>
     <head>
@@ -59,10 +57,9 @@ function template_admin_header($title, $selected = 'dashboard', $selected_child 
 EOT;
 }
 // Template admin footer
-function template_admin_footer()
-{
+function template_admin_footer() {
     // Indenting the below code may cause an error
-    echo <<<EOT
+echo <<<EOT
         </main>
         <script>
         let aside = document.querySelector("aside"), main = document.querySelector("main"), header = document.querySelector("header");
@@ -132,33 +129,29 @@ function template_admin_footer()
 EOT;
 }
 // Convert date to elapsed string function
-function time_elapsed_string($datetime, $full = false)
-{
-    $now = new DateTime();
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
     $ago = new DateTime($datetime);
     $diff = $now->diff($ago);
     $diff->w = floor($diff->d / 7);
     $diff->d -= $diff->w * 7;
-    $string = ['y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second'];
+    $string = ['y' => 'year','m' => 'month','w' => 'week','d' => 'day','h' => 'hour','i' => 'minute','s' => 'second'];
     foreach ($string as $k => &$v) {
         if ($diff->$k) {
-            $v = $diff->$k.' '.$v.($diff->$k > 1 ? 's' : '');
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
         } else {
             unset($string[$k]);
         }
     }
-    if (!$full) {
-        $string = array_slice($string, 0, 1);
-    }
-
-    return $string ? implode(', ', $string).' ago' : 'just now';
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 function str_to_version_info($string)
-{
-    $latest_version = false;
-    if (preg_match('/^\s*?(\d+\.\d+\.\d+)/i', $string, $match)) {
-        $latest_version = $match[1];
-    }
-
-    return $latest_version;
-}
+	{
+		$latest_version = FALSE;
+		if (preg_match('/^\s*?(\d+\.\d+\.\d+)/i', $string, $match)) {
+			$latest_version = $match[1];
+		}
+		return $latest_version;
+	}
+?>
