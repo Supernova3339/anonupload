@@ -22,7 +22,7 @@ $filelist = getenv('APP_FILELIST') ?? 'jpeg,jpg,gif,png,zip,xls,doc,mp3,mp4,mpeg
 $sizeverification = getenv('APP_SIZE_VERIFICATION') ?? true;
 $filedestination = getenv('APP_FILE_DESTINATION') ?? 'files';
 $baseurl = getenv('APP_BASE_URL') ?? $_SERVER['HTTP_HOST'];
-$maxsize = getenv('APP_MAX_SIZE') ?? (int) (ini_get('upload_max_filesize'));
+$maxsize = getenv('APP_MAX_SIZE') ?? (int)(ini_get('upload_max_filesize'));
 $minsize = getenv('APP_MIN_SIZE') ?? '0';
 
 $waitfor = getenv('APP_DOWNLOAD_TIME');
@@ -52,3 +52,6 @@ define('plausible_embed', $plausibleembed);
 define('plausibleembedtoken', $plausibleembedtoken);
 /* version */
 define('version', 'v1.0.0'); // DO NOT FORGET TO CHANGE THIS
+
+
+?>

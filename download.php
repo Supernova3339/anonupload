@@ -1,26 +1,29 @@
-<?php
-require_once __DIR__.'/system/core.class.php';
+<?php 
+require_once(__DIR__ . '/system/core.class.php');
 // size convertor
-function sizeFormat($bytes)
-{
-    $kb = 1024;
-    $mb = $kb * 1024;
-    $gb = $mb * 1024;
-    $tb = $gb * 1024;
+function sizeFormat($bytes){ 
+$kb = 1024;
+$mb = $kb * 1024;
+$gb = $mb * 1024;
+$tb = $gb * 1024;
 
-    if (($bytes >= 0) && ($bytes < $kb)) {
-        return $bytes.' B';
-    } elseif (($bytes >= $kb) && ($bytes < $mb)) {
-        return ceil($bytes / $kb).' KB';
-    } elseif (($bytes >= $mb) && ($bytes < $gb)) {
-        return ceil($bytes / $mb).' MB';
-    } elseif (($bytes >= $gb) && ($bytes < $tb)) {
-        return ceil($bytes / $gb).' GB';
-    } elseif ($bytes >= $tb) {
-        return ceil($bytes / $tb).' TB';
-    } else {
-        return $bytes.' B';
-    }
+if (($bytes >= 0) && ($bytes < $kb)) {
+return $bytes . ' B';
+
+} elseif (($bytes >= $kb) && ($bytes < $mb)) {
+return ceil($bytes / $kb) . ' KB';
+
+} elseif (($bytes >= $mb) && ($bytes < $gb)) {
+return ceil($bytes / $mb) . ' MB';
+
+} elseif (($bytes >= $gb) && ($bytes < $tb)) {
+return ceil($bytes / $gb) . ' GB';
+
+} elseif ($bytes >= $tb) {
+return ceil($bytes / $tb) . ' TB';
+} else {
+return $bytes . ' B';
+}
 }
 
 $maxsize = max_size;
@@ -32,11 +35,11 @@ $filesize = filesize($fileURL);
 $baseurl = file_url_destination;
 
 // Check if file exists
-if (!file_exists($fileURL)) {
-    http_response_code(404);
+if(!file_exists($fileURL)){
+ http_response_code(404);
 }
-if ($file == '') {
-    http_response_code(404);
+if($file == ''){
+http_response_code(404);
 }
 
 $core = new Core();
@@ -52,9 +55,10 @@ $core = new Core();
 <body>
 	<div class="wrapper">
 		<img src="assets/images/logo.png">
-<?php
-if (isset($_POST['submit'])) {
-}
+<?php 
+if(isset($_POST['submit'])){
+  
+	}
 ?>
         <!--<form>-->
 	    <div class="download-area">	
@@ -68,7 +72,7 @@ if (isset($_POST['submit'])) {
 	<?php echo'
   <script>
   const downloadBtn = document.querySelector(".download-btn");
-const fileLink = "'.$fileURL.'";
+const fileLink = "' . $fileURL .'";
 const initTimer = () => {
     if(downloadBtn.classList.contains("disable-timer")) {
         return window.open(fileLink);
@@ -93,7 +97,7 @@ const initTimer = () => {
 downloadBtn.addEventListener("click", initTimer);
   </script>
   </script>'; ?>
-		<?php if (plausibledomain && plausibledatadomain == !null) { ?>
+		<?php if(plausibledomain&&plausibledatadomain == !null){ ?>
 	<script defer data-domain="<?=plausibledatadomain?>" src="<?=plausibledomain?>/js/script.js"></script>
 	<?php }  ?>
 </body>

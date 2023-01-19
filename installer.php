@@ -1,81 +1,78 @@
 <?php
 // Get server url
-$url = 'https://'.$_SERVER['HTTP_HOST'];
+$url = 'https://' . $_SERVER['HTTP_HOST'];
 // Output messages
 $response = '';
 
 /* Install function */
-function install($config_file = 'system/config.php')
-{
-    $contents = '<?php'.PHP_EOL;
-    // Write new variables to files
-    foreach ($_POST as $k => $v) {
-        if ($k == 'code') {
-            continue;
-        }
-        $v = in_array(strtolower($v), ['true', 'false']) || is_numeric($v) ? strtolower($v) : '\''.$v.'\'';
-        $contents .= 'define(\''.$k.'\','.$v.');'.PHP_EOL;
+function install($config_file = 'system/config.php') {
+	$contents = '<?php' . PHP_EOL;
+	// Write new variables to files
+	foreach ($_POST as $k => $v) {
+		if ($k == 'code') continue;
+        $v = in_array(strtolower($v), ['true', 'false']) || is_numeric($v) ? strtolower($v) : '\'' . $v . '\'';
+        $contents .= 'define(\'' . $k . '\',' . $v . ');' . PHP_EOL;
     }
-    $contents .= '?>';
-    if (!file_put_contents($config_file, $contents)) {
-        return false;
-    }
-
-    return true;
+	$contents .= '?>';
+	if (!file_put_contents($config_file, $contents)) {
+		return FALSE;
+	}
+	return TRUE;
 }
 
 /*Verify Purchase Code function*/
 function verify($code)
 {
+	
+	/*If the submit form is success*/
+	if(!empty($code)){
+		
+		/*add purchase code to the API link*/
+		$purchase_code = $code;
+		$url = "https://dl.supers0ft.us/anonuptest/api.php?code=".$purchase_code;
+		$curl = curl_init($url);
+		
+		/*Set your personal token*/
+		// $personal_token = "9COT6mduU2sZSMIlC09aYAQveaRdQ2H9";
+		
+		/*Correct header for the curl extension*/
+		$header = array();
+		$header[] = 'Authorization: Bearer '.$personal_token;
+		$header[] = 'User-Agent: Purchase code verification';
+		$header[] = 'timeout: 20';
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_HTTPHEADER,$header);
+		
+		/*Connect to the API, and get values from there*/
+		$envatoCheck = curl_exec($curl);
+		curl_close($curl);
+		$envatoCheck = json_decode($envatoCheck);
+		
+		/*Variable request from the API*/
+		$date = new DateTime(isset($envatoCheck->supported_until) ? $envatoCheck->supported_until : false);							
+		$support_date = $date->format('Y-m-d H:i:s');
+		$sold = new DateTime(isset($envatoCheck->sold_at) ? $envatoCheck->sold_at : false);
+		$sold_at = $sold->format('Y-m-d H:i:s');
+		$buyer = (isset( $envatoCheck->buyer) ? $envatoCheck->buyer : false);
+		$license = (isset( $envatoCheck->license) ? $envatoCheck->license : false);
+		$count = (isset( $envatoCheck->purchase_count) ? $envatoCheck->purchase_count : false);
+		$support_amount = (isset( $envatoCheck->support_amount) ? $envatoCheck->support_amount : false);
+		$item  = (isset( $envatoCheck->item->previews->landscape_preview->landscape_url ) ? $envatoCheck->item->previews->landscape_preview->landscape_url  : false);
 
-    /*If the submit form is success*/
-    if (!empty($code)) {
-
-        /*add purchase code to the API link*/
-        $purchase_code = $code;
-        $url = 'https://dl.supers0ft.us/anonuptest/api.php?code='.$purchase_code;
-        $curl = curl_init($url);
-
-        /*Set your personal token*/
-        // $personal_token = "9COT6mduU2sZSMIlC09aYAQveaRdQ2H9";
-
-        /*Correct header for the curl extension*/
-        $header = [];
-        $header[] = 'Authorization: Bearer '.$personal_token;
-        $header[] = 'User-Agent: Purchase code verification';
-        $header[] = 'timeout: 20';
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-
-        /*Connect to the API, and get values from there*/
-        $envatoCheck = curl_exec($curl);
-        curl_close($curl);
-        $envatoCheck = json_decode($envatoCheck);
-
-        /*Variable request from the API*/
-        $date = new DateTime(isset($envatoCheck->supported_until) ? $envatoCheck->supported_until : false);
-        $support_date = $date->format('Y-m-d H:i:s');
-        $sold = new DateTime(isset($envatoCheck->sold_at) ? $envatoCheck->sold_at : false);
-        $sold_at = $sold->format('Y-m-d H:i:s');
-        $buyer = (isset($envatoCheck->buyer) ? $envatoCheck->buyer : false);
-        $license = (isset($envatoCheck->license) ? $envatoCheck->license : false);
-        $count = (isset($envatoCheck->purchase_count) ? $envatoCheck->purchase_count : false);
-        $support_amount = (isset($envatoCheck->support_amount) ? $envatoCheck->support_amount : false);
-        $item = (isset($envatoCheck->item->previews->landscape_preview->landscape_url) ? $envatoCheck->item->previews->landscape_preview->landscape_url : false);
-
-        /*Check for Special Characters*/
-        if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/', $code)) {
-            return 'Not allowed to use special characters!';
-        }
-
-        /*Check for Empty Spaces*/
-        if (!isset($code) || trim($code) == '') {
-            return 'You need to fill up the input area!';
-        }
-
-        /*If Purchase code exists, But Purchase ended*/
-        if (isset($envatoCheck->item->name) && (date('Y-m-d H:i:s') >= $support_date)) {
-            return "
+		
+		/*Check for Special Characters*/
+		if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/', $code)){
+		   	return 'Not allowed to use special characters!';	
+		}
+		
+		/*Check for Empty Spaces*/
+		if(!isset($code) || trim($code) == ''){
+			return 'You need to fill up the input area!';	
+		}
+		
+		/*If Purchase code exists, But Purchase ended*/
+		if (isset($envatoCheck->item->name) && (date('Y-m-d H:i:s') >= $support_date)){   
+			return "
 				<div class='alert alert-danger' role='alert'>
 					<h3>{$envatoCheck->item->name}</h3>										
 					<div class='row'>
@@ -118,15 +115,14 @@ function verify($code)
 					</div>
 				</div>
 			";
-        }
+		}
 
-        /*If Purchase code exists, display client information*/
-        if (isset($envatoCheck->item->name) && (date('Y-m-d H:i:s') < $support_date)) {
-            if (!install()) {
-                return '<h3>Error!</h3><p>Could not write to file! Please check permissions and try again!</a>';
-            }
-
-            return "
+		/*If Purchase code exists, display client information*/
+		if (isset($envatoCheck->item->name) && (date('Y-m-d H:i:s') < $support_date)){    
+			if (!install()) {
+				return '<h3>Error!</h3><p>Could not write to file! Please check permissions and try again!</a>';
+			}
+			return "
 				<div class='alert alert-success' role='alert'>
 					<h3>{$envatoCheck->item->name}</h3>										
 					<div class='row'>
@@ -169,11 +165,11 @@ function verify($code)
 					</div>
 				</div> 
 			";
-        }
+		}
 
-        /*If Purchase Code doesn't exist, no information will be displayed*/
-        if (!isset($envatoCheck->item->name)) {
-            return " 
+		/*If Purchase Code doesn't exist, no information will be displayed*/
+		if (!isset($envatoCheck->item->name)){ 											
+			return " 
 				<div class='alert alert-danger' role='alert'>
 					<h3>INVALID PURCHASE CODE.</h3>
 					<div class='row'>
@@ -216,18 +212,19 @@ function verify($code)
 					</div>
 				</div>
 			";
-        }
-    }
+		} 
+
+	}
 }
 
 if ($_POST) {
     if (isset($_POST['code'])) {
-        // Validate code
-        $response = verify($_POST['code']);
-    } else {
-        // No code specified
-        $response = '<h3>Error!</h3><p>Please enter your Envato code!</p>';
-    }
+		// Validate code
+		$response = verify($_POST['code']);
+	} else {
+		// No code specified
+		$response = '<h3>Error!</h3><p>Please enter your Envato code!</p>';
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -427,9 +424,9 @@ if ($_POST) {
 				}
 			};
 		});
-		<?php if (!empty($_POST)) { ?>
+		<?php if (!empty($_POST)): ?>
 		setStep(5);
-		<?php } ?>
+		<?php endif; ?>
 		</script>
 
 	</body>
