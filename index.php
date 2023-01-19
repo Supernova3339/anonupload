@@ -1,30 +1,27 @@
-<?php 
-require_once(__DIR__ . '/system/core.class.php');
-require_once(__DIR__ . '/system/config.php');
+<?php
+require_once __DIR__.'/system/core.class.php';
+require_once __DIR__.'/system/config.php';
 // size convertor
-function sizeFormat($bytes){ 
-$kb = 1024;
-$mb = $kb * 1024;
-$gb = $mb * 1024;
-$tb = $gb * 1024;
+function sizeFormat($bytes)
+{
+    $kb = 1024;
+    $mb = $kb * 1024;
+    $gb = $mb * 1024;
+    $tb = $gb * 1024;
 
-if (($bytes >= 0) && ($bytes < $kb)) {
-return $bytes . ' B';
-
-} elseif (($bytes >= $kb) && ($bytes < $mb)) {
-return ceil($bytes / $kb) . ' KB';
-
-} elseif (($bytes >= $mb) && ($bytes < $gb)) {
-return ceil($bytes / $mb) . ' MB';
-
-} elseif (($bytes >= $gb) && ($bytes < $tb)) {
-return ceil($bytes / $gb) . ' GB';
-
-} elseif ($bytes >= $tb) {
-return ceil($bytes / $tb) . ' TB';
-} else {
-return $bytes . ' B';
-}
+    if (($bytes >= 0) && ($bytes < $kb)) {
+        return $bytes.' B';
+    } elseif (($bytes >= $kb) && ($bytes < $mb)) {
+        return ceil($bytes / $kb).' KB';
+    } elseif (($bytes >= $mb) && ($bytes < $gb)) {
+        return ceil($bytes / $mb).' MB';
+    } elseif (($bytes >= $gb) && ($bytes < $tb)) {
+        return ceil($bytes / $gb).' GB';
+    } elseif ($bytes >= $tb) {
+        return ceil($bytes / $tb).' TB';
+    } else {
+        return $bytes.' B';
+    }
 }
 
 $maxsize = max_size;
@@ -42,39 +39,38 @@ $core = new Core();
 <body>
 	<div class="wrapper">
 		<img src="assets/images/logo.png">
-<?php 
-if(isset($_POST['submit'])){
-	if($core->FileTypeVerification($_FILES["fileToUpload"])){
-		if($core->FileSizeVerification($_FILES["fileToUpload"])){
-			$newfilename = $core->FileNameConvertor($_FILES["fileToUpload"]);
-			if($core->UploadFile($_FILES["fileToUpload"], $newfilename)){
-				 $destination = base64_encode(file_destination.'/'.$newfilename);
-				?>
+<?php
+if (isset($_POST['submit'])) {
+    if ($core->FileTypeVerification($_FILES['fileToUpload'])) {
+        if ($core->FileSizeVerification($_FILES['fileToUpload'])) {
+            $newfilename = $core->FileNameConvertor($_FILES['fileToUpload']);
+            if ($core->UploadFile($_FILES['fileToUpload'], $newfilename)) {
+                $destination = base64_encode(file_destination.'/'.$newfilename); ?>
 				<div class="notification success">
 					Success ! Your file are available here: <a href="download.php?file=<?php echo $destination; ?>">download.php?file=<?php echo $destination; ?></a>
 				</div>
 				<?php
-			}else{
-				?>
+            } else {
+                ?>
 				<div class="notification error">
 					An error occured while trying to upload your file(s).
 				</div>
 				<?php
-			}
-		}else{
-			?>
+            }
+        } else {
+            ?>
 			<div class="notification error">
 			Your file is too high/low.
 			</div>
 			<?php
-		}
-	}else{
-		?>
+        }
+    } else {
+        ?>
 		<div class="notification error">
 			Incorrect file format.
 		</div>
 		<?php
-	}
+    }
 }
 
 ?>
@@ -101,7 +97,7 @@ $(document).ready(function(){
 });
     </script>
 	
-	<?php if(plausibledomain&&plausibledatadomain == !null){ ?>
+	<?php if (plausibledomain && plausibledatadomain == !null) { ?>
 	<script defer data-domain="<?=plausibledatadomain?>" src="<?=plausibledomain?>/js/script.js"></script>
 	<?php }  ?>
 </body>

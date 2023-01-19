@@ -1,24 +1,25 @@
 <?php
-$LOGIN_INFORMATION = array(
-'user' => 'userpass',
-'admin' => 'adminpass'
-);
+$LOGIN_INFORMATION = [
+    'user'  => 'userpass',
+    'admin' => 'adminpass',
+];
 define('USE_USERNAME', true);
 define('LOGOUT_URL', 'https://dl.supers0ft.us/logout.php/');
 define('TIMEOUT_MINUTES', 0);
 define('TIMEOUT_CHECK_ACTIVITY', true);
-if(isset($_GET['help'])) {
-die('Include following code into every page you would like to protect, at the very beginning (first line):<br>&lt;?php include("' . str_replace('\\','\\\\',__FILE__) . '"); ?&gt;');
+if (isset($_GET['help'])) {
+    exit('Include following code into every page you would like to protect, at the very beginning (first line):<br>&lt;?php include("'.str_replace('\\', '\\\\', __FILE__).'"); ?&gt;');
 }
 $timeout = (TIMEOUT_MINUTES == 0 ? 0 : time() + TIMEOUT_MINUTES * 60);
-if(isset($_GET['logout'])) {
-setcookie("verify", '', $timeout, '/');
-header('Location: ' . LOGOUT_URL);
-exit();
+if (isset($_GET['logout'])) {
+    setcookie('verify', '', $timeout, '/');
+    header('Location: '.LOGOUT_URL);
+    exit();
 }
-if(!function_exists('showLoginPasswordProtect')) {
-function showLoginPasswordProtect($error_msg) {
-?>
+if (!function_exists('showLoginPasswordProtect')) {
+    function showLoginPasswordProtect($error_msg)
+    {
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +62,9 @@ input { border: 1px solid black; }
 <p><b> Administration Panel</b></p></div>
 <div class="errmessage">
 <font color="#2f80ed"><?php echo $error_msg; ?></font></div>
-<?php if (USE_USERNAME) echo '<span class="login"></span><br /><input type="input" placeholder="Username" name="access_login" /><br /><span class="pass"></span><br />'; ?>
+<?php if (USE_USERNAME) {
+            echo '<span class="login"></span><br /><input type="input" placeholder="Username" name="access_login" /><br /><span class="pass"></span><br />';
+        } ?>
 <input type="password" placeholder="Password" name="access_password" /><p></p>
 <div class="buttonlogin"><input type="submit" name="join" value="🔒" /></div>
 </form>
@@ -70,41 +73,39 @@ input { border: 1px solid black; }
 
 <!--Login query.-->
 <?php
-die();
-}
+exit();
+    }
 }
 if (isset($_POST['access_password'])) {
-$login = isset($_POST['access_login']) ? $_POST['access_login'] : '';
-$pass = $_POST['access_password'];
-if (!USE_USERNAME && !in_array($pass, $LOGIN_INFORMATION)
-|| (USE_USERNAME && ( !array_key_exists($login, $LOGIN_INFORMATION) || $LOGIN_INFORMATION[$login] != $pass ) ) 
+    $login = isset($_POST['access_login']) ? $_POST['access_login'] : '';
+    $pass = $_POST['access_password'];
+    if (!USE_USERNAME && !in_array($pass, $LOGIN_INFORMATION)
+|| (USE_USERNAME && (!array_key_exists($login, $LOGIN_INFORMATION) || $LOGIN_INFORMATION[$login] != $pass))
 ) {
-showLoginPasswordProtect("Incorrect data.");
-}
-else {
-setcookie("auth", md5($login.'%'.$pass), $timeout, '/');
-unset($_POST['access_login']);
-unset($_POST['access_password']);
-unset($_POST['Submit']);
-}
-}
-else {
-if (!isset($_COOKIE['auth'])) {
-showLoginPasswordProtect("");
-}
-$found = false;
-foreach($LOGIN_INFORMATION as $key=>$val) {
-$lp = (USE_USERNAME ? $key : '') .'%'.$val;
-if ($_COOKIE['auth'] == md5($lp)) {
-$found = true;
-if (TIMEOUT_CHECK_ACTIVITY) {
-setcookie("auth", md5($lp), $timeout, '/');
-}
-break;
-}
-}
-if (!$found) {
-showLoginPasswordProtect("");
-}
+        showLoginPasswordProtect('Incorrect data.');
+    } else {
+        setcookie('auth', md5($login.'%'.$pass), $timeout, '/');
+        unset($_POST['access_login']);
+        unset($_POST['access_password']);
+        unset($_POST['Submit']);
+    }
+} else {
+    if (!isset($_COOKIE['auth'])) {
+        showLoginPasswordProtect('');
+    }
+    $found = false;
+    foreach ($LOGIN_INFORMATION as $key=>$val) {
+        $lp = (USE_USERNAME ? $key : '').'%'.$val;
+        if ($_COOKIE['auth'] == md5($lp)) {
+            $found = true;
+            if (TIMEOUT_CHECK_ACTIVITY) {
+                setcookie('auth', md5($lp), $timeout, '/');
+            }
+            break;
+        }
+    }
+    if (!$found) {
+        showLoginPasswordProtect('');
+    }
 }
 ?>
