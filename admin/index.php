@@ -1,6 +1,6 @@
 <?php
 // (A) LOGIN CHECKS
-require "check.php";
+require 'check.php';
 ?>
 <head>
 	<title>Login</title>
@@ -53,7 +53,7 @@ require "check.php";
 	</div>
 <?php } ?>
 <!-- invalid captcha -->
-					<?php if (isset($_GET["capfail"])) { ?>
+					<?php if (isset($_GET['capfail'])) { ?>
 					<div class="alert alert-danger shadow" data-dismiss="alert" role="alert" style="border-left:#721C24 5px solid; border-radius: 0px">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		   
