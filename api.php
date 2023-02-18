@@ -4,17 +4,17 @@
 $code = isset($_GET['code']) ? $_GET['code'] : '';
 
 // If the code isn't in the correct format, CloudFlare will throw a 1020
-if (!preg_match("/^([a-f0-9]{8})-(([a-f0-9]{4})-){3}([a-f0-9]{12}) *$/i", $code)) {
-	http_response_code(403);
-	echo "error code: 1020";
-	die;
+if (!preg_match('/^([a-f0-9]{8})-(([a-f0-9]{4})-){3}([a-f0-9]{12}) *$/i', $code)) {
+    http_response_code(403);
+    echo 'error code: 1020';
+    exit;
 }
 
 header('Content-Type: application/json; charset=utf-8');
 
 // Handle valid codes
-if ($code == "86781236-23d0-4b3c-7dfa-c1c147e0dece") {
-	echo <<<EOD
+if ($code == '86781236-23d0-4b3c-7dfa-c1c147e0dece') {
+    echo <<<'EOD'
 {
   "amount": "19.84",
   "sold_at": "2016-09-07T10:54:28+10:00",
@@ -38,8 +38,8 @@ EOD;
 
 // Handle invalid codes
 else {
-	http_response_code(404);
-	echo <<<EOD
+    http_response_code(404);
+    echo <<<'EOD'
 {
 	"error": 404,
 	"description": "No sale belonging to the current user found with that code"
