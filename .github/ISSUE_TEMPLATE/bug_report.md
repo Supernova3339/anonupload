@@ -7,6 +7,9 @@ assignees: ''
 
 ---
 
+- [ ] Does this post follow the code of conduct?
+- [ ] Does this post follow the AnonUpload [terms of service](https://anonupload.us/terms)?
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
@@ -34,8 +37,13 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
-** Version**
+**Version**
 Add your AnonUpload version here.
+
+**What are you running with?**
+- OS: [e.g. Debian 11]
+- TYPE: [e.g. Easypanel]
+- Channel [e.g. Stable]
 
 **Additional context**
 Add any other context about the problem here.
